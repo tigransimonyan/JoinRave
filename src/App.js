@@ -11,7 +11,7 @@ function App() {
   const [canPlay, setCanPlay] = useState(false);
 
   const getNextTrack = () => {
-    return fetch('http://localhost:9003/current')
+    return fetch('https://api.joinrave.com/current')
       .then((response) => response.json())
       .then((response) => {
         setTrack(response);
