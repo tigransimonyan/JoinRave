@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import PlayIcon from './play.svg';
 import PauseIcon from './pause.svg';
 
@@ -8,7 +8,7 @@ function App() {
   const [track, setTrack] = useState(null);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [canPlay, setCanPlay] = useState(false);
+  const [canplay, setCanplay] = useState(false);
 
   const getNextTrack = () => {
     return fetch('https://api.joinrave.com/current')
@@ -16,48 +16,44 @@ function App() {
       .then((response) => {
         setTrack(response);
         audio.src = response.metadata.file;
+        audio.load();
       });
   };
 
   const play = () => {
     setLoading(true);
-    setPlaying(true);
     getNextTrack().catch(() => {
       setLoading(false);
-      setPlaying(false);
     });
   };
 
   const stop = () => {
     audio.pause();
     setPlaying(false);
-  };
-
-  const onPlaying = () => {
-    setLoading(false);
-    setPlaying(true);
+    setCanplay(false);
   };
 
   const onCanplay = () => {
-    setCanPlay(true);
+    if (!canplay) {
+      setCanplay(true);
+    }
   };
 
   useEffect(() => {
-    if (canPlay && track) {
+    if (canplay && track) {
       audio.currentTime = track.time;
-      audio.volume = 1;
       audio.play();
+      setPlaying(true);
+      setLoading(false);
     }
-  }, [canPlay, track]);
+  }, [canplay, track]);
 
   useEffect(() => {
     audio.addEventListener('ended', play);
     audio.addEventListener('canplay', onCanplay);
-    audio.addEventListener('playing', onPlaying);
     return () => {
       audio.removeEventListener('ended', play);
       audio.removeEventListener('canplay', onCanplay);
-      audio.removeEventListener('playing', onPlaying);
     };
   }, []);
 
