@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,23 +10,28 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 html {
-  overflow: hidden;
-  height: 100vh;
-  background-image: url(./bg.jpg);
+  background-image: url(./assets/bg.jpg);
   background-size: cover;
 }
 
-body {
+html,
+body,
+#root {
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 canvas {
@@ -41,10 +45,19 @@ canvas {
   opacity: 0.6;
 }
 
-img {
-  transition: transform 0.3s;
-  cursor: pointer;
+.pause,
+.play {
   width: 60px;
+}
+
+.fullscreen {
+  width: 30px;
+  margin-top: 20px;
+}
+
+img {
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 img:hover {

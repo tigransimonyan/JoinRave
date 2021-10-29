@@ -1,7 +1,10 @@
-import { useEffect, useState, useLayoutEffect, useCallback } from "react";
-import PlayIcon from "./play.svg";
-import PauseIcon from "./pause.svg";
-import { startAnimation } from "./animation";
+import { useEffect, useState, useLayoutEffect, useCallback } from 'react';
+import PlayIcon from './assets/play.svg';
+import PauseIcon from './assets/pause.svg';
+// import FullScreenIcon from './assets/fullscreen.svg';
+// import NormalScreenIcon from './assets/normalscreen.svg';
+// import FavoriteIcon from './assets/favorite.svg';
+import { startAnimation } from './animation';
 
 const audio = new Audio();
 
@@ -12,12 +15,16 @@ function App() {
   const [canplay, setCanplay] = useState(false);
 
   const getNextTrack = () => {
-    return fetch("https://api.joinrave.com/current")
+    return fetch('https://api.joinrave.com/current')
       .then((response) => response.json())
       .then((response) => {
         setTrack(response);
-        audio.src = response.metadata.file;
-        audio.load();
+        const src = response.metadata.file;
+        if (src !== audio.src) {
+          audio.src = src;
+          audio.load();
+          setCanplay(false);
+        }
       });
   };
 
@@ -28,17 +35,25 @@ function App() {
     });
   }, []);
 
-  const stop = () => {
+  const pause = useCallback(() => {
     audio.pause();
     setPlaying(false);
-    setCanplay(false);
-  };
+  }, []);
 
   const onCanplay = useCallback(() => {
     if (!canplay) {
       setCanplay(true);
     }
   }, [canplay]);
+
+  const onPlay = useCallback(() => {
+    if (!playing) {
+      play();
+    }
+  }, [playing, play]);
+
+  const onEnded = useCallback(() => play(), [play]);
+  const onPause = useCallback(() => pause(), [pause]);
 
   useEffect(() => {
     if (canplay && track) {
@@ -50,13 +65,17 @@ function App() {
   }, [canplay, track]);
 
   useEffect(() => {
-    audio.addEventListener("ended", play);
-    audio.addEventListener("canplay", onCanplay);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('canplay', onCanplay);
     return () => {
-      audio.removeEventListener("ended", play);
-      audio.removeEventListener("canplay", onCanplay);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('canplay', onCanplay);
     };
-  }, [play, onCanplay]);
+  }, [onPlay, onCanplay, onEnded, onPause]);
 
   useLayoutEffect(() => {
     try {
@@ -67,24 +86,24 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div id="main">
       <canvas id="canv" width="2265" height="1465"></canvas>
       <div className="app">
         {playing ? (
-          <img alt="Pause" src={PauseIcon} onClick={stop} />
+          <img class="pause" alt="Pause" src={PauseIcon} onClick={pause} />
         ) : (
-          <img alt="Play" src={PlayIcon} onClick={play} />
+          <img class="play" alt="Play" src={PlayIcon} onClick={play} />
         )}
         <div className="info">
-          {loading && "Loading..."}
-          {!loading && track && (
+          {loading && 'Playing...'}
+          {!loading && track?.metadata && (
             <>
               {track?.metadata?.title} by <b>{track?.metadata?.artist}</b>
             </>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
