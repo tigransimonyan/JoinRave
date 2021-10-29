@@ -42,8 +42,13 @@ canvas {
 }
 
 img {
+  transition: transform 0.3s;
   cursor: pointer;
   width: 60px;
+}
+
+img:hover {
+  transform: scale(1.1);
 }
 
 .app {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState, useLayoutEffect, useCallback } from "react";
 import PlayIcon from "./play.svg";
 import PauseIcon from "./pause.svg";
 import { startAnimation } from "./animation";
@@ -21,12 +21,12 @@ function App() {
       });
   };
 
-  const play = () => {
+  const play = useCallback(() => {
     setLoading(true);
     getNextTrack().catch(() => {
       setLoading(false);
     });
-  };
+  }, []);
 
   const stop = () => {
     audio.pause();
@@ -34,11 +34,11 @@ function App() {
     setCanplay(false);
   };
 
-  const onCanplay = () => {
+  const onCanplay = useCallback(() => {
     if (!canplay) {
       setCanplay(true);
     }
-  };
+  }, [canplay]);
 
   useEffect(() => {
     if (canplay && track) {
@@ -56,7 +56,7 @@ function App() {
       audio.removeEventListener("ended", play);
       audio.removeEventListener("canplay", onCanplay);
     };
-  }, []);
+  }, [play, onCanplay]);
 
   useLayoutEffect(() => {
     try {
@@ -64,16 +64,16 @@ function App() {
     } catch (e) {
       console.log(e);
     }
-  }, [startAnimation]);
+  }, []);
 
   return (
     <>
       <canvas id="canv" width="2265" height="1465"></canvas>
       <div className="app">
         {playing ? (
-          <img src={PauseIcon} onClick={stop} />
+          <img alt="Pause" src={PauseIcon} onClick={stop} />
         ) : (
-          <img src={PlayIcon} onClick={play} />
+          <img alt="Play" src={PlayIcon} onClick={play} />
         )}
         <div className="info">
           {loading && "Loading..."}
