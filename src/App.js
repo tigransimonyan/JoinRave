@@ -87,7 +87,7 @@ function App() {
 
   return (
     <div id="main">
-      <canvas id="canv" width="2265" height="1465"></canvas>
+      <canvas id="canv" width="100%" height="100%"></canvas>
       <div className="app">
         {playing ? (
           <img class="pause" alt="Pause" src={PauseIcon} onClick={pause} />
