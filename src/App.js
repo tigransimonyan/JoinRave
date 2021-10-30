@@ -15,11 +15,11 @@ function App() {
   const [canplay, setCanplay] = useState(false);
 
   const getNextTrack = () => {
-    return fetch('https://api.joinrave.com/current')
+    return fetch(process.env.REACT_APP_API)
       .then((response) => response.json())
       .then((response) => {
         setTrack(response);
-        const src = response.metadata.file;
+        const src = response.file;
         if (src !== audio.src) {
           audio.src = src;
           audio.load();
@@ -96,9 +96,9 @@ function App() {
         )}
         <div className="info">
           {loading && 'Playing...'}
-          {!loading && track?.metadata && (
+          {!loading && track && (
             <>
-              {track?.metadata?.title} by <b>{track?.metadata?.artist}</b>
+              {track?.title} by <b>{track?.artist}</b>
             </>
           )}
         </div>
