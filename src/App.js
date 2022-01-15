@@ -1,7 +1,7 @@
 import { useEffect, useState, useLayoutEffect, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
 import PauseIcon from './assets/pause.svg';
-import { startAnimation } from './animation';
+import { initAnimation } from './animation';
 // import FullScreenIcon from './assets/fullscreen.svg';
 // import NormalScreenIcon from './assets/normalscreen.svg';
 // import FavoriteIcon from './assets/favorite.svg';
@@ -11,6 +11,7 @@ const audio = new Audio();
 function App() {
   const [playing, setPlaying] = useState(false);
   const [canplay, setCanplay] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
@@ -20,7 +21,6 @@ function App() {
 
   const play = useCallback(() => {
     if (canplay && !playing) {
-      console.log('audio.play');
       audio.play();
       setPlaying(true);
     }
@@ -28,7 +28,6 @@ function App() {
 
   const pause = useCallback(() => {
     if (playing) {
-      console.log('audio.pause');
       audio.pause();
       setPlaying(false);
     }
@@ -36,7 +35,6 @@ function App() {
 
   const onCanplay = useCallback(() => {
     if (!canplay) {
-      console.log('onCanplay');
       setCanplay(true);
     }
   }, [canplay]);
@@ -45,22 +43,28 @@ function App() {
   // const onEnded = useCallback(() => play(), [play]);
   const onPause = useCallback(() => pause(), [pause]);
 
+  const onError = () => {
+    setError(true);
+  };
+
   useEffect(() => {
     audio.addEventListener('play', onPlay);
     // audio.addEventListener('ended', onEnded);
     audio.addEventListener('pause', onPause);
     audio.addEventListener('canplay', onCanplay);
+    audio.addEventListener('error', onError);
     return () => {
       audio.removeEventListener('play', onPlay);
       // audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('canplay', onCanplay);
+      audio.removeEventListener('error', onError);
     };
-  }, [onPlay, onCanplay, onPause]);
+  }, [onPlay, onCanplay, onError, onPause]);
 
   useLayoutEffect(() => {
     try {
-      startAnimation();
+      initAnimation(audio);
     } catch (e) {
       console.log(e);
     }
@@ -76,7 +80,15 @@ function App() {
           <img className="play" alt="Play" src={PlayIcon} onClick={play} />
         )}
         <div className="info">
-          Live Stream from <b>Earth</b>
+          {error ? (
+            <>
+              No Live Stream <b>Today</b>
+            </>
+          ) : (
+            <>
+              Live Stream from <b>Earth</b>
+            </>
+          )}
         </div>
       </div>
     </div>

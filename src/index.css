@@ -76,6 +76,8 @@ img:hover {
   color: #fff;
   line-height: 22px;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 0 12px;
+  padding: 2px 12px;
   max-width: 300px;
+  background: #000;
+  border-radius: 8px;
 }

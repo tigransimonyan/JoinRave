@@ -17,7 +17,7 @@ export function initAnimation(audio) {
 
   //var avgCounter = document.getElementById('avg');
   //var radCounter = document.getElementById('rad');
-  var canvas = document.getElementById('visualCanvas');
+  var canvas = document.getElementById('canv');
 
   var settings = {
     polygons: 20,
@@ -47,8 +47,8 @@ export function initAnimation(audio) {
     pausedAt = 0;
 
     actx = new AudioContext();
-    canvas = document.getElementById('visualCanvas');
-    ctx = document.getElementById('visualCanvas').getContext('2d');
+    canvas = document.getElementById('canv');
+    ctx = canvas.getContext('2d');
 
     analyser = actx.createAnalyser();
     analyser.fftSize = settings.fftSize;

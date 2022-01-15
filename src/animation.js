@@ -1,4 +1,4 @@
-const startAnimation = () => {
+const initAnimation = () => {
   window.requestAnimFrame = (function (callback) {
     return (
       window.requestAnimationFrame ||
@@ -39,12 +39,7 @@ const startAnimation = () => {
   };
 
   Part.prototype.frame = function () {
-    if (
-      this.ind_x == 0 ||
-      this.ind_x == gnum - 1 ||
-      this.ind_y == 0 ||
-      this.ind_y == gnum - 1
-    ) {
+    if (this.ind_x == 0 || this.ind_x == gnum - 1 || this.ind_y == 0 || this.ind_y == gnum - 1) {
       return;
     }
 
@@ -110,7 +105,7 @@ const startAnimation = () => {
   }
   //draw grid function
   function draw() {
-    $.strokeStyle = "hsla(" + (ŭ % 360) + ",100%,50%,1)";
+    $.strokeStyle = 'hsla(' + (ŭ % 360) + ',100%,50%,1)';
     $.beginPath();
     ŭ -= 0.5;
     for (var i = 0; i < gnum - 1; i += 1) {
@@ -142,7 +137,7 @@ const startAnimation = () => {
   }
   //call functions to run
   function calls() {
-    $.fillStyle = "hsla(0, 5%, 5%, .1)";
+    $.fillStyle = 'hsla(0, 5%, 5%, .1)';
     $.fillRect(0, 0, _x, _y);
 
     mv_part();
@@ -150,9 +145,9 @@ const startAnimation = () => {
     frm++;
   }
 
-  var c = document.getElementById("canv");
-  var $ = c.getContext("2d");
-  $.fillStyle = "hsla(0, 5%, 5%, .1)";
+  var c = document.getElementById('canv');
+  var $ = c.getContext('2d');
+  $.fillStyle = 'hsla(0, 5%, 5%, .1)';
   $.fillRect(0, 0, _x, _y);
 
   function resize() {
@@ -166,13 +161,13 @@ const startAnimation = () => {
   }
   window.requestAnimFrame(go);
 
-  document.addEventListener("mousemove", MSMV, false);
-  document.addEventListener("mousedown", MSDN, false);
-  document.addEventListener("mouseup", MSUP, false);
+  document.addEventListener('mousemove', MSMV, false);
+  document.addEventListener('mousedown', MSDN, false);
+  document.addEventListener('mouseup', MSUP, false);
 
-  document.addEventListener("touchstart", MSDN, false);
-  document.addEventListener("touchmove", MSMV, false);
-  document.addEventListener("touchend", MSUP, false);
+  document.addEventListener('touchstart', MSDN, false);
+  document.addEventListener('touchmove', MSMV, false);
+  document.addEventListener('touchend', MSUP, false);
 
   function MSDN(e) {
     msdn = true;
@@ -197,4 +192,4 @@ const startAnimation = () => {
   resize();
 };
 
-export { startAnimation };
+export { initAnimation };
