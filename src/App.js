@@ -1,81 +1,62 @@
 import { useEffect, useState, useLayoutEffect, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
 import PauseIcon from './assets/pause.svg';
+import { startAnimation } from './animation';
 // import FullScreenIcon from './assets/fullscreen.svg';
 // import NormalScreenIcon from './assets/normalscreen.svg';
 // import FavoriteIcon from './assets/favorite.svg';
-import { startAnimation } from './animation';
 
 const audio = new Audio();
 
 function App() {
-  const [track, setTrack] = useState(null);
   const [playing, setPlaying] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [canplay, setCanplay] = useState(false);
 
-  const getNextTrack = () => {
-    return fetch(process.env.REACT_APP_API)
-      .then((response) => response.json())
-      .then((response) => {
-        setTrack(response);
-        const src = response.file;
-        if (src !== audio.src) {
-          audio.src = src;
-          audio.load();
-          setCanplay(false);
-        }
-      });
-  };
+  useEffect(() => {
+    audio.crossOrigin = 'anonymous';
+    audio.src = process.env.REACT_APP_API;
+    audio.load();
+  }, []);
 
   const play = useCallback(() => {
-    setLoading(true);
-    getNextTrack().catch(() => {
-      setLoading(false);
-    });
-  }, []);
+    if (canplay && !playing) {
+      console.log('audio.play');
+      audio.play();
+      setPlaying(true);
+    }
+  }, [canplay, playing]);
 
   const pause = useCallback(() => {
-    audio.pause();
-    setPlaying(false);
-  }, []);
+    if (playing) {
+      console.log('audio.pause');
+      audio.pause();
+      setPlaying(false);
+    }
+  }, [playing]);
 
   const onCanplay = useCallback(() => {
     if (!canplay) {
+      console.log('onCanplay');
       setCanplay(true);
     }
   }, [canplay]);
 
-  const onPlay = useCallback(() => {
-    if (!playing) {
-      play();
-    }
-  }, [playing, play]);
-
-  const onEnded = useCallback(() => play(), [play]);
+  const onPlay = useCallback(() => play(), [play]);
+  // const onEnded = useCallback(() => play(), [play]);
   const onPause = useCallback(() => pause(), [pause]);
 
   useEffect(() => {
-    if (canplay && track) {
-      audio.currentTime = track.time;
-      audio.play();
-      setPlaying(true);
-      setLoading(false);
-    }
-  }, [canplay, track]);
-
-  useEffect(() => {
     audio.addEventListener('play', onPlay);
-    audio.addEventListener('ended', onEnded);
+    // audio.addEventListener('ended', onEnded);
     audio.addEventListener('pause', onPause);
     audio.addEventListener('canplay', onCanplay);
     return () => {
       audio.removeEventListener('play', onPlay);
-      audio.removeEventListener('ended', onEnded);
+      // audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('canplay', onCanplay);
     };
-  }, [onPlay, onCanplay, onEnded, onPause]);
+  }, [onPlay, onCanplay, onPause]);
 
   useLayoutEffect(() => {
     try {
@@ -90,17 +71,12 @@ function App() {
       <canvas id="canv" width="100%" height="100%"></canvas>
       <div className="app">
         {playing ? (
-          <img class="pause" alt="Pause" src={PauseIcon} onClick={pause} />
+          <img className="pause" alt="Pause" src={PauseIcon} onClick={pause} />
         ) : (
-          <img class="play" alt="Play" src={PlayIcon} onClick={play} />
+          <img className="play" alt="Play" src={PlayIcon} onClick={play} />
         )}
         <div className="info">
-          {loading && 'Playing...'}
-          {!loading && track && (
-            <>
-              {track?.title} by <b>{track?.artist}</b>
-            </>
-          )}
+          Live Stream from <b>Earth</b>
         </div>
       </div>
     </div>
