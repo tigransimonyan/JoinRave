@@ -47,6 +47,7 @@ canvas {
 .pause,
 .play {
   width: 60px;
+  height: 75px;
 }
 
 .fullscreen {
@@ -80,4 +81,25 @@ img:hover {
   max-width: 300px;
   background: #000;
   border-radius: 8px;
+}
+
+.loading {
+  width: 45px;
+  height: 45px;
+  border: 5px solid;
+  border-radius: 100%;
+  display: inline-block;
+  border-color: rgba(141, 141, 141, 0.6) rgba(141, 141, 141, 0.6) rgba(141, 141, 141, 0.6) #fff;
+  animation: rotating 2s linear infinite;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

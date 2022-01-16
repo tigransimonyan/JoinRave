@@ -1,14 +1,13 @@
 var initAnimation = function (audio) {
   var noise = new window.SimplexNoise();
   function play() {
-    var context = new AudioContext();
-    var src = context.createMediaElementSource(audio);
+    var context = new (window.AudioContext || window.webkitAudioContext)();
     var analyser = context.createAnalyser();
+    var src = context.createMediaElementSource(audio);
     src.connect(analyser);
     analyser.connect(context.destination);
     analyser.fftSize = 512;
-    var bufferLength = analyser.frequencyBinCount;
-    var dataArray = new Uint8Array(bufferLength);
+    var dataArray = new Uint8Array(analyser.frequencyBinCount);
     var scene = new window.window.THREE.Scene();
     var group = new window.THREE.Group();
     var camera = new window.THREE.PerspectiveCamera(
@@ -67,8 +66,6 @@ var initAnimation = function (audio) {
 
     window.addEventListener('resize', onWindowResize, false);
 
-    render();
-
     function render() {
       analyser.getByteFrequencyData(dataArray);
 
@@ -99,6 +96,8 @@ var initAnimation = function (audio) {
       renderer.render(scene, camera);
       requestAnimationFrame(render);
     }
+
+    render();
 
     function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -147,6 +146,7 @@ var initAnimation = function (audio) {
       mesh.geometry.computeFaceNormals();
     }
   }
+
   play();
 };
 

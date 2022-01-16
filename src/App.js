@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
 import PauseIcon from './assets/pause.svg';
 import { initAnimation } from './animation-4';
@@ -15,8 +15,13 @@ function App() {
 
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
-    audio.src = process.env.REACT_APP_API;
+    audio.src = 'https://greggman.github.io/doodles/sounds/DOCTOR VOX - Level Up.mp3';
     audio.load();
+    try {
+      initAnimation(audio);
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   const play = useCallback(() => {
@@ -62,20 +67,14 @@ function App() {
     };
   }, [onPlay, onCanplay, onError, onPause]);
 
-  useLayoutEffect(() => {
-    try {
-      initAnimation(audio);
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
-
   return (
     <div id="main">
       <canvas id="canv" width="100%" height="100%"></canvas>
       <div id="out"></div>
       <div className="app">
-        {playing ? (
+        {!canplay && !error ? (
+          <div className="loading" />
+        ) : playing ? (
           <img className="pause" alt="Pause" src={PauseIcon} onClick={pause} />
         ) : (
           <img className="play" alt="Play" src={PlayIcon} onClick={play} />
