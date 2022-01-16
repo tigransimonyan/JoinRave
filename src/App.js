@@ -1,7 +1,7 @@
 import { useEffect, useState, useLayoutEffect, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
 import PauseIcon from './assets/pause.svg';
-import { initAnimation } from './animation';
+import { initAnimation } from './animation-4';
 // import FullScreenIcon from './assets/fullscreen.svg';
 // import NormalScreenIcon from './assets/normalscreen.svg';
 // import FavoriteIcon from './assets/favorite.svg';
@@ -73,6 +73,7 @@ function App() {
   return (
     <div id="main">
       <canvas id="canv" width="100%" height="100%"></canvas>
+      <div id="out"></div>
       <div className="app">
         {playing ? (
           <img className="pause" alt="Pause" src={PauseIcon} onClick={pause} />

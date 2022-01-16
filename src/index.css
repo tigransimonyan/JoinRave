@@ -32,6 +32,7 @@ body,
   align-items: center;
   justify-content: center;
   position: relative;
+  background: #000;
 }
 
 canvas {
@@ -42,7 +43,7 @@ canvas {
   bottom: 0;
   top: 0;
   z-index: 1;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .pause,
