@@ -43,9 +43,9 @@ function App() {
   // const onEnded = useCallback(() => play(), [play]);
   const onPause = useCallback(() => pause(), [pause]);
 
-  const onError = () => {
+  const onError = useCallback(() => {
     setError(true);
-  };
+  }, []);
 
   useEffect(() => {
     audio.addEventListener('play', onPlay);
