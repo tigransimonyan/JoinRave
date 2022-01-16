@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
-    audio.src = 'https://greggman.github.io/doodles/sounds/DOCTOR VOX - Level Up.mp3';
+    audio.src = process.env.REACT_APP_API;
     audio.load();
     try {
       initAnimation(audio);
