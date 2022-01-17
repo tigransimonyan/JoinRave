@@ -1,11 +1,6 @@
-var initAnimation = function (audio) {
+var initAnimation = function (analyser) {
   var noise = new window.SimplexNoise();
   function play() {
-    var context = new (window.AudioContext || window.webkitAudioContext)();
-    var analyser = context.createAnalyser();
-    var src = context.createMediaElementSource(audio);
-    src.connect(analyser);
-    analyser.connect(context.destination);
     analyser.fftSize = 512;
     var dataArray = new Uint8Array(analyser.frequencyBinCount);
     var scene = new window.window.THREE.Scene();
@@ -20,7 +15,10 @@ var initAnimation = function (audio) {
     camera.lookAt(scene.position);
     scene.add(camera);
 
-    var renderer = new window.THREE.WebGLRenderer({ alpha: true, antialias: true });
+    var renderer = new window.THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+    });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     var planeGeometry = new window.THREE.PlaneGeometry(800, 800, 20, 20);
@@ -62,15 +60,18 @@ var initAnimation = function (audio) {
 
     scene.add(group);
 
-    document.getElementById('out').appendChild(renderer.domElement);
+    document.getElementById("out").appendChild(renderer.domElement);
 
-    window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener("resize", onWindowResize, false);
 
     function render() {
       analyser.getByteFrequencyData(dataArray);
 
       var lowerHalfArray = dataArray.slice(0, dataArray.length / 2 - 1);
-      var upperHalfArray = dataArray.slice(dataArray.length / 2 - 1, dataArray.length - 1);
+      var upperHalfArray = dataArray.slice(
+        dataArray.length / 2 - 1,
+        dataArray.length - 1
+      );
 
       var overallAvg = avg(dataArray);
       var lowerMax = max(lowerHalfArray);
@@ -135,7 +136,8 @@ var initAnimation = function (audio) {
         var amp = 2;
         var time = Date.now();
         var distance =
-          (noise.noise2D(vertex.x + time * 0.0003, vertex.y + time * 0.0001) + 0) *
+          (noise.noise2D(vertex.x + time * 0.0003, vertex.y + time * 0.0001) +
+            0) *
           distortionFr *
           amp;
         vertex.z = distance;

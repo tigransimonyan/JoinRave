@@ -1,12 +1,17 @@
-import { useEffect, useState, useCallback } from 'react';
-import PlayIcon from './assets/play.svg';
-import PauseIcon from './assets/pause.svg';
-import { initAnimation } from './animation-4';
+import { useEffect, useState, useCallback } from "react";
+import PlayIcon from "./assets/play.svg";
+import PauseIcon from "./assets/pause.svg";
+import { initAnimation } from "./animation-4";
 // import FullScreenIcon from './assets/fullscreen.svg';
 // import NormalScreenIcon from './assets/normalscreen.svg';
 // import FavoriteIcon from './assets/favorite.svg';
 
 const audio = new Audio();
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const src = audioContext.createMediaElementSource(audio);
+const analyser = audioContext.createAnalyser();
+src.connect(analyser);
+analyser.connect(audioContext.destination);
 
 function App() {
   const [playing, setPlaying] = useState(false);
@@ -14,11 +19,12 @@ function App() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    audio.crossOrigin = 'anonymous';
+    audio.crossOrigin = "anonymous";
     audio.src = process.env.REACT_APP_API;
+    audio.autoplay = false;
     audio.load();
     try {
-      initAnimation(audio);
+      initAnimation(analyser);
     } catch (e) {
       console.log(e);
     }
@@ -26,6 +32,9 @@ function App() {
 
   const play = useCallback(() => {
     if (canplay && !playing) {
+      if (audioContext.state === "suspended") {
+        audioContext.resume();
+      }
       audio.play();
       setPlaying(true);
     }
@@ -53,17 +62,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    audio.addEventListener('play', onPlay);
+    audio.addEventListener("play", onPlay);
     // audio.addEventListener('ended', onEnded);
-    audio.addEventListener('pause', onPause);
-    audio.addEventListener('canplay', onCanplay);
-    audio.addEventListener('error', onError);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("canplay", onCanplay);
+    audio.addEventListener("error", onError);
     return () => {
-      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener("play", onPlay);
       // audio.removeEventListener('ended', onEnded);
-      audio.removeEventListener('pause', onPause);
-      audio.removeEventListener('canplay', onCanplay);
-      audio.removeEventListener('error', onError);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("canplay", onCanplay);
+      audio.removeEventListener("error", onError);
     };
   }, [onPlay, onCanplay, onError, onPause]);
 
