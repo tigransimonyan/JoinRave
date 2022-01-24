@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch('/info.json')
+    fetch('/info.json?r='.concat(Math.random()))
       .then((response) => response.json())
       .then((response) => setInfo(response));
   }, []);
