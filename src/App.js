@@ -1,10 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
-import PlayIcon from "./assets/play.svg";
-import PauseIcon from "./assets/pause.svg";
-import { initAnimation } from "./animation-4";
-// import FullScreenIcon from './assets/fullscreen.svg';
-// import NormalScreenIcon from './assets/normalscreen.svg';
-// import FavoriteIcon from './assets/favorite.svg';
+import { useEffect, useState, useCallback } from 'react';
+import PlayIcon from './assets/play.svg';
+import PauseIcon from './assets/pause.svg';
+import { initAnimation } from './animation-4';
 
 const audio = new Audio();
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -17,9 +14,13 @@ function App() {
   const [playing, setPlaying] = useState(false);
   const [canplay, setCanplay] = useState(false);
   const [error, setError] = useState(false);
+  const [info, setInfo] = useState({
+    title: '',
+    message: '...',
+  });
 
   useEffect(() => {
-    audio.crossOrigin = "anonymous";
+    audio.crossOrigin = 'anonymous';
     audio.src = process.env.REACT_APP_API;
     audio.autoplay = false;
     audio.load();
@@ -30,9 +31,15 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    fetch('/info.json')
+      .then((response) => response.json())
+      .then((response) => setInfo(response));
+  }, []);
+
   const play = useCallback(() => {
     if (canplay && !playing) {
-      if (audioContext.state === "suspended") {
+      if (audioContext.state === 'suspended') {
         audioContext.resume();
       }
       audio.play();
@@ -62,17 +69,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    audio.addEventListener("play", onPlay);
+    audio.addEventListener('play', onPlay);
     // audio.addEventListener('ended', onEnded);
-    audio.addEventListener("pause", onPause);
-    audio.addEventListener("canplay", onCanplay);
-    audio.addEventListener("error", onError);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('canplay', onCanplay);
+    audio.addEventListener('error', onError);
     return () => {
-      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener('play', onPlay);
       // audio.removeEventListener('ended', onEnded);
-      audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("canplay", onCanplay);
-      audio.removeEventListener("error", onError);
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('canplay', onCanplay);
+      audio.removeEventListener('error', onError);
     };
   }, [onPlay, onCanplay, onError, onPause]);
 
@@ -88,17 +95,7 @@ function App() {
         ) : (
           <img className="play" alt="Play" src={PlayIcon} onClick={play} />
         )}
-        <div className="info">
-          {error ? (
-            <>
-              No Live Stream <b>Today</b>
-            </>
-          ) : (
-            <>
-              Live Stream from <b>Earth</b>
-            </>
-          )}
-        </div>
+        <div className="info" dangerouslySetInnerHTML={{ __html: info.message }} />
       </div>
     </div>
   );
