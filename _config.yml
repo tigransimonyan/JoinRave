@@ -18,6 +18,11 @@ defaults:
       path: '_news'
     values:
       layout: default
+  - scope:
+      path: ''
+      type: 'news'
+    values:
+      layout: 'newsitem'
 
 exclude:
   - vendor # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
