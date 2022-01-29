@@ -1,0 +1,12 @@
+title: News | JoinRave.com
+timezone: Asia/Yerevan
+markdown: kramdown
+
+permalink: /news/:title/
+
+exclude:
+  - vendor # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
+  - Gemfile.lock
+  - Gemfile
+  - tools
+  - README.md
