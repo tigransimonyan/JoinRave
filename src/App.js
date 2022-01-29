@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
-import PauseIcon from './assets/pause.svg';
+import PauseIcon from './assets/stop.svg';
 import { initAnimation } from './animation-4';
 
 const audio = new Audio();
