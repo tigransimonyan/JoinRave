@@ -60,28 +60,25 @@ var initAnimation = function (analyser) {
 
     scene.add(group);
 
-    document.getElementById("out").appendChild(renderer.domElement);
+    document.getElementById('out').appendChild(renderer.domElement);
 
-    window.addEventListener("resize", onWindowResize, false);
+    window.addEventListener('resize', onWindowResize, false);
 
     function render() {
       analyser.getByteFrequencyData(dataArray);
 
       var lowerHalfArray = dataArray.slice(0, dataArray.length / 2 - 1);
-      var upperHalfArray = dataArray.slice(
-        dataArray.length / 2 - 1,
-        dataArray.length - 1
-      );
+      var upperHalfArray = dataArray.slice(dataArray.length / 2 - 1, dataArray.length - 1);
 
-      var overallAvg = avg(dataArray);
+      // var overallAvg = avg(dataArray);
       var lowerMax = max(lowerHalfArray);
       var lowerAvg = avg(lowerHalfArray);
       var upperMax = max(upperHalfArray);
       var upperAvg = avg(upperHalfArray);
 
       var lowerMaxFr = lowerMax / lowerHalfArray.length;
-      var lowerAvgFr = lowerAvg / lowerHalfArray.length;
-      var upperMaxFr = upperMax / upperHalfArray.length;
+      // var lowerAvgFr = lowerAvg / lowerHalfArray.length;
+      // var upperMaxFr = upperMax / upperHalfArray.length;
       var upperAvgFr = upperAvg / upperHalfArray.length;
 
       makeRoughGround(plane, modulate(upperAvgFr, 0, 1, 0.5, 4));
@@ -136,8 +133,7 @@ var initAnimation = function (analyser) {
         var amp = 2;
         var time = Date.now();
         var distance =
-          (noise.noise2D(vertex.x + time * 0.0003, vertex.y + time * 0.0001) +
-            0) *
+          (noise.noise2D(vertex.x + time * 0.0003, vertex.y + time * 0.0001) + 0) *
           distortionFr *
           amp;
         vertex.z = distance;
