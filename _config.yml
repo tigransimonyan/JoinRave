@@ -5,11 +5,15 @@ markdown: kramdown
 include: ['_news']
 permalink: /news/:title/
 
+collections:
+  pages:
+    output: true
+    permalink: /:name
+  news:
+    output: true
+    permalink: /news/:name
+
 defaults:
-  - scope:
-      path: '_news'
-    values:
-      layout: default
   - scope:
       path: '_news'
     values:
