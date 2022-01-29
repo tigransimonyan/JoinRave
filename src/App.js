@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
-import PauseIcon from './assets/stop.svg';
+import StopIcon from './assets/stop.svg';
 import { initAnimation } from './animation-4';
 
 const audio = new Audio();
@@ -91,7 +91,7 @@ function App() {
         {!canplay && !error ? (
           <div className="loading" />
         ) : playing ? (
-          <img className="pause" alt="Pause" src={PauseIcon} onClick={pause} />
+          <img className="pause" alt="Pause" src={StopIcon} onClick={pause} />
         ) : (
           <img className="play" alt="Play" src={PlayIcon} onClick={play} />
         )}
