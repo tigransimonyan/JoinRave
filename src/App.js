@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from './assets/play.svg';
 import StopIcon from './assets/stop.svg';
+import LogoImg from './assets/logo.png';
 import { initAnimation } from './animation-4';
 
 const audio = new Audio();
@@ -96,6 +97,7 @@ function App() {
         )}
         <div className="info" dangerouslySetInnerHTML={{ __html: info.message }} />
       </div>
+      <img class="logo" alt="Joinrave.com" width="20" src={LogoImg} />
     </div>
   );
 }

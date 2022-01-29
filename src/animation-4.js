@@ -72,8 +72,8 @@ var initAnimation = function (analyser) {
 
       // var overallAvg = avg(dataArray);
       var lowerMax = max(lowerHalfArray);
-      var lowerAvg = avg(lowerHalfArray);
-      var upperMax = max(upperHalfArray);
+      // var lowerAvg = avg(lowerHalfArray);
+      // var upperMax = max(upperHalfArray);
       var upperAvg = avg(upperHalfArray);
 
       var lowerMaxFr = lowerMax / lowerHalfArray.length;
