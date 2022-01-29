@@ -4,6 +4,9 @@ markdown: kramdown
 
 permalink: /news/:title/
 
+collections:
+  news:
+
 exclude:
   - vendor # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
   - Gemfile.lock
