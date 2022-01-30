@@ -22,7 +22,7 @@ defaults:
       path: ''
       type: 'news'
     values:
-      layout: 'newsitem'
+      layout: newsitem
 
 exclude:
   - vendor # Avoid Jekyll mistakenly read the vendor directory on Travis-CI's VM .
