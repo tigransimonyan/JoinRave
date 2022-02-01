@@ -60,7 +60,7 @@ var initAnimation = function (analyser) {
 
     scene.add(group);
 
-    document.getElementById('out').appendChild(renderer.domElement);
+    document.getElementById('cnv-out').appendChild(renderer.domElement);
 
     window.addEventListener('resize', onWindowResize, false);
 

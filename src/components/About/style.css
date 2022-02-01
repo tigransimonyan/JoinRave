@@ -1,0 +1,29 @@
+.about {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+  padding: 24px;
+}
+
+.about-title {
+  padding-top: 24px;
+  padding-bottom: 40px;
+  font-size: 24px;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  width: 100%;
+}
+
+.about-text {
+  padding-bottom: 40px;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  line-height: 30px;
+  color: #fff;
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+}
