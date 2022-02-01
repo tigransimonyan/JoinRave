@@ -70,7 +70,7 @@ function App() {
 
   const onEnded = useCallback(() => {
     pause();
-  }, [play]);
+  }, [pause]);
 
   const onPause = useCallback(() => {
     pause();
@@ -79,7 +79,7 @@ function App() {
   const onError = useCallback(() => {
     pause();
     setLoading(false);
-  }, []);
+  }, [pause]);
 
   useEffect(() => {
     audio.addEventListener('play', onPlay);
@@ -96,7 +96,7 @@ function App() {
       audio.removeEventListener('canplay', onCanplay);
       audio.removeEventListener('error', onError);
     };
-  }, [onPlay, onCanplay, onError, onPause]);
+  }, [onPlay, onCanplay, onError, onPause, onEnded]);
 
   return (
     <div id="main">
@@ -117,10 +117,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div className="chat-section">
-        <h3>Chat with the live DJ and listeners!</h3>
-        <iframe className="chat-iframe" src="https://irc.def.am/?channel=#joinrave"></iframe>
-      </div> */
-}
