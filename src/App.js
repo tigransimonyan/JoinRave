@@ -85,14 +85,14 @@ function App() {
     audio.addEventListener('play', onPlay);
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('pause', onPause);
-    // audio.addEventListener('stalled', onPause);
+    audio.addEventListener('stalled', onPause);
     audio.addEventListener('canplay', onCanplay);
     audio.addEventListener('error', onError);
     return () => {
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('pause', onPause);
-      // audio.removeEventListener('stalled', onPause);
+      audio.removeEventListener('stalled', onPause);
       audio.removeEventListener('canplay', onCanplay);
       audio.removeEventListener('error', onError);
     };
