@@ -22,6 +22,8 @@ html,
 body,
 #root {
   background-color: #000;
+  overflow: hidden;
+  height: 100%;
 }
 
 .logo {
