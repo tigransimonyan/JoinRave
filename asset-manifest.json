@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.0085940b.chunk.css",
-    "main.js": "/static/js/main.ddd8caa1.chunk.js",
+    "main.js": "/static/js/main.87e1298a.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.8f1fc9e9.js",
     "static/js/2.82bc7fa5.chunk.js": "/static/js/2.82bc7fa5.chunk.js",
     "index.html": "/index.html",
     "static/js/2.82bc7fa5.chunk.js.LICENSE.txt": "/static/js/2.82bc7fa5.chunk.js.LICENSE.txt",
-    "static/media/classic.d9f6f31e.jpg": "/static/media/classic.d9f6f31e.jpg",
-    "static/media/fractal.d8448fae.png": "/static/media/fractal.d8448fae.png",
+    "static/media/classic.383a2d3b.jpg": "/static/media/classic.383a2d3b.jpg",
+    "static/media/fractal.ef91197d.png": "/static/media/fractal.ef91197d.png",
     "static/media/play.f3c1806e.svg": "/static/media/play.f3c1806e.svg",
     "static/media/stop.334a087a.svg": "/static/media/stop.334a087a.svg",
-    "static/media/worm-hole.cffaa367.png": "/static/media/worm-hole.cffaa367.png"
+    "static/media/worm-hole.e0cbf70d.png": "/static/media/worm-hole.e0cbf70d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8f1fc9e9.js",
     "static/js/2.82bc7fa5.chunk.js",
     "static/css/main.0085940b.chunk.css",
-    "static/js/main.ddd8caa1.chunk.js"
+    "static/js/main.87e1298a.chunk.js"
   ]
 }
