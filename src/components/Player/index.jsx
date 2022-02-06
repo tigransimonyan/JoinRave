@@ -1,36 +1,25 @@
 import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from '../../assets/play.svg';
 import StopIcon from '../../assets/stop.svg';
-import { initAnimation } from './animation-4';
 import './style.css';
 
 const audio = new Audio();
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioContext.createAnalyser();
-audio.crossOrigin = 'anonymous';
-audio.autoplay = false;
-audio.volume = 1;
+// const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+// const analyser = audioContext.createAnalyser();
+// audio.crossOrigin = 'anonymous';
+// audio.autoplay = false;
+// audio.volume = 1;
+// const src = audioContext.createMediaElementSource(audio);
+// src.connect(analyser);
+// analyser.connect(audioContext.destination);
 
 function Player() {
-  // const [canplay, setCanplay] = useState(false);
-  // const [error, setError] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState({
     title: '',
     message: '...',
   });
-
-  useEffect(() => {
-    try {
-      const src = audioContext.createMediaElementSource(audio);
-      src.connect(analyser);
-      analyser.connect(audioContext.destination);
-      initAnimation(analyser);
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
 
   useEffect(() => {
     fetch(`/info.json?r=${Math.random()}`)
@@ -56,9 +45,9 @@ function Player() {
   const onCanplay = useCallback(() => {
     if (!playing) {
       setPlaying(true);
-      if (audioContext.state === 'suspended') {
-        audioContext.resume();
-      }
+      // if (audioContext.state === 'suspended') {
+      //   audioContext.resume();
+      // }
       audio.play();
     }
   }, [playing]);
@@ -100,17 +89,16 @@ function Player() {
 
   return (
     <div className="player">
-      <div class="player-canvas-wrapper" id="cnv-out"></div>
       <div className="player-wrapper">
         {loading ? (
-          <div className="loading" />
+          <div className="player-loading" />
         ) : playing ? (
           <img className="player-pause-button" alt="Pause" src={StopIcon} onClick={pause} />
         ) : (
           <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
         )}
-        <div className="player-info" dangerouslySetInnerHTML={{ __html: info.message }} />
       </div>
+      <div className="player-info" dangerouslySetInnerHTML={{ __html: info.message }} />
     </div>
   );
 }

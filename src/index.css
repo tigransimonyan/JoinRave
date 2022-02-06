@@ -24,34 +24,10 @@ body,
   background-color: #000;
 }
 
-.fullscreen {
-  width: 30px;
-  margin-top: 20px;
-}
-
 .logo {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  z-index: 2;
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 100;
   pointer-events: none;
-}
-
-.loading {
-  width: 40px;
-  height: 40px;
-  border: 3px solid;
-  border-radius: 100%;
-  display: inline-block;
-  border-color: rgba(141, 141, 141, 0.6) rgba(141, 141, 141, 0.6) rgba(141, 141, 141, 0.6) #fff;
-  animation: rotating 2s linear infinite;
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
