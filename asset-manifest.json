@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.88efc17c.chunk.css",
-    "main.js": "/static/js/main.87e1298a.chunk.js",
+    "main.css": "/static/css/main.1b24df94.chunk.css",
+    "main.js": "/static/js/main.d741dd61.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.8f1fc9e9.js",
-    "static/js/2.82bc7fa5.chunk.js": "/static/js/2.82bc7fa5.chunk.js",
+    "static/js/2.2cb3f567.chunk.js": "/static/js/2.2cb3f567.chunk.js",
     "index.html": "/index.html",
-    "static/js/2.82bc7fa5.chunk.js.LICENSE.txt": "/static/js/2.82bc7fa5.chunk.js.LICENSE.txt",
-    "static/media/classic.383a2d3b.jpg": "/static/media/classic.383a2d3b.jpg",
+    "static/js/2.2cb3f567.chunk.js.LICENSE.txt": "/static/js/2.2cb3f567.chunk.js.LICENSE.txt",
     "static/media/fractal.ef91197d.png": "/static/media/fractal.ef91197d.png",
     "static/media/play.f3c1806e.svg": "/static/media/play.f3c1806e.svg",
+    "static/media/ss.5fda5522.gif": "/static/media/ss.5fda5522.gif",
     "static/media/stop.334a087a.svg": "/static/media/stop.334a087a.svg",
+    "static/media/tv.c905f1d8.svg": "/static/media/tv.c905f1d8.svg",
     "static/media/worm-hole.e0cbf70d.png": "/static/media/worm-hole.e0cbf70d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8f1fc9e9.js",
-    "static/js/2.82bc7fa5.chunk.js",
-    "static/css/main.88efc17c.chunk.css",
-    "static/js/main.87e1298a.chunk.js"
+    "static/js/2.2cb3f567.chunk.js",
+    "static/css/main.1b24df94.chunk.css",
+    "static/js/main.d741dd61.chunk.js"
   ]
 }
