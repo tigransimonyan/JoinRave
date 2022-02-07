@@ -77,16 +77,18 @@
     background-repeat: no-repeat;
     &:after {
       content: ' ';
-      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAADUlEQVR4AWNg+P+fAQAFAAH/+wrF3wAAAABJRU5ErkJggg==);
-      background-position: left top;
-      background-repeat: repeat;
-      background-size: 2px 1px;
       left: 0;
       right: 0;
       top: 0;
       bottom: 0;
       position: absolute;
       z-index: 1;
+
+      background-color: #000000;
+      opacity: 0.1;
+      background-image: linear-gradient(#ffffff 0.4px, transparent 0.4px),
+        linear-gradient(to right, #ffffff 0.4px, #000000 0.4px);
+      background-size: 4px 4px;
     }
   }
 }
