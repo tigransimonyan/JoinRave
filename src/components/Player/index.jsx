@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from '../../assets/play.svg';
 import StopIcon from '../../assets/stop.svg';
-import './style.css';
+import './style.scss';
 
 const audio = new Audio();
 // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -16,6 +16,7 @@ const audio = new Audio();
 function Player() {
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [info, setInfo] = useState({
     title: '',
     message: '...',
@@ -66,9 +67,15 @@ function Player() {
   }, [pause]);
 
   const onError = useCallback(() => {
-    pause();
-    setLoading(false);
-  }, [pause]);
+    if (!error) {
+      setError(true);
+      audio.src = 'http://81.88.36.42:8010/stream/1/';
+      audio.pause();
+    } else {
+      pause();
+      setLoading(false);
+    }
+  }, [pause, error]);
 
   useEffect(() => {
     audio.addEventListener('play', onPlay);
