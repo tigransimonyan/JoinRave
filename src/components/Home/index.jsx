@@ -1,44 +1,49 @@
-import { useEffect, useState } from "react";
-import "./style.scss";
-import FractalImg from "../../assets/modes/fractal.png";
-import WormHoleImg from "../../assets/modes/worm-hole.png";
-import GiphyGif from "../../assets/ss.gif";
-import TvSvg from "../../assets/tv.svg";
+import { useState } from 'react';
+import './style.scss';
+import FractalImg from '../../assets/modes/fractal.png';
+import WormHoleImg from '../../assets/modes/worm-hole.png';
+import CloseSvg from '../../assets/close.svg';
+import TvSvg from '../../assets/tv.svg';
 
 const Home = () => {
-  useEffect(() => {}, []);
-  const [mode, setMode] = useState("classic");
+  const [mode, setMode] = useState('classic');
   const [showSelect, setShowSelect] = useState(null);
 
-  const chnageMode = (name) => {
+  const changeMode = (name) => {
     setMode(name);
     setShowSelect(false);
   };
 
+  const image = `/gifs/dualvoidanima-7.gif`;
+
   return (
     <>
-      <img
-        alt="tv"
-        className="mode-modal-button"
-        onClick={() => setShowSelect(!showSelect)}
-        src={TvSvg}
-      />
+      {showSelect ? (
+        <img
+          alt="tv"
+          className="mode-modal-close-button"
+          onClick={() => setShowSelect(!showSelect)}
+          src={CloseSvg}
+        />
+      ) : (
+        <img
+          alt="tv"
+          className="mode-modal-open-button"
+          onClick={() => setShowSelect(!showSelect)}
+          src={TvSvg}
+        />
+      )}
+
       {showSelect && (
         <div className="mode-selector">
           <h4 className="mode-selector-title">Select Rave Mode</h4>
           <div className="mode-selector-modes">
-            <div
-              className="mode-selector-mode"
-              onClick={() => chnageMode("classic")}
-            >
-              <img
-                className="mode-selector-mode-image"
-                alt="Classic Mode"
-                src={GiphyGif}
-              />
+            <div className="mode-selector-mode" onClick={() => changeMode('classic')}>
+              <img className="mode-selector-mode-image" alt="Classic Mode" src={image} />
               <div className="mode-selector-mode-name">
-                Gif by{" "}
+                Gif by{' '}
                 <a
+                  onClick={(e) => e.stopPropagation()}
                   href="https://giphy.com/gifs/trippy-psychedelic-universe-OFmcFc8voTzpRkCKKF"
                   rel="noreferrer"
                   target="_blank"
@@ -47,18 +52,16 @@ const Home = () => {
                 </a>
               </div>
             </div>
-            <div
-              className="mode-selector-mode"
-              onClick={() => chnageMode("orbits")}
-            >
+            <div className="mode-selector-mode" onClick={() => changeMode('orbits')}>
               <img
                 className="mode-selector-mode-image"
                 alt="Barry Martin's Hopalong Orbits"
                 src={FractalImg}
               />
               <div className="mode-selector-mode-name">
-                Barry Martin's Hopalong Orbits by{" "}
+                Barry Martin's Hopalong Orbits by{' '}
                 <a
+                  onClick={(e) => e.stopPropagation()}
                   href="https://github.com/dghost"
                   target="_blank"
                   rel="noreferrer"
@@ -67,18 +70,16 @@ const Home = () => {
                 </a>
               </div>
             </div>
-            <div
-              className="mode-selector-mode"
-              onClick={() => chnageMode("wormhole")}
-            >
+            <div className="mode-selector-mode" onClick={() => changeMode('wormhole')}>
               <img
                 className="mode-selector-mode-image"
                 alt="devildrey33's WormHole"
                 src={WormHoleImg}
               />
               <div className="mode-selector-mode-name">
-                WormHole by{" "}
+                WormHole by{' '}
                 <a
+                  onClick={(e) => e.stopPropagation()}
                   href="https://github.com/devildrey33"
                   target="_blank"
                   rel="noreferrer"
@@ -90,23 +91,23 @@ const Home = () => {
           </div>
         </div>
       )}
-      {mode === "orbits" && (
+      {mode === 'orbits' && (
         <iframe
           title="Hopalong VR"
-          className="mode-selector-iframe"
+          className="mode-background mode-background-iframe"
           src="https://tigransimonyan.github.io/hopalong-vr?r=3"
         />
       )}
-      {mode === "wormhole" && (
+      {mode === 'wormhole' && (
         <iframe
           title="WormHole"
-          className="mode-selector-iframe"
+          className="mode-background mode-background-iframe"
           src="https://tigransimonyan.github.io/wormhole?r=3"
         />
       )}
-      {mode === "classic" && (
-        <div className="mode-selector-background">
-          <img alt="Background Image" src={GiphyGif} />
+      {mode === 'classic' && (
+        <div className="mode-background mode-background-image">
+          <img alt="Background Image" src={image} />
         </div>
       )}
     </>
