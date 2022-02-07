@@ -5,7 +5,7 @@ h3,
 h4,
 h5,
 p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,4 +32,8 @@ body,
   left: 24px;
   z-index: 100;
   pointer-events: none;
+}
+
+a {
+  color: #ede716;
 }
