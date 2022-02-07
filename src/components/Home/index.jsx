@@ -20,16 +20,16 @@ const Home = () => {
     <>
       {showSelect ? (
         <img
-          alt="tv"
+          alt="close"
           className="mode-modal-close-button"
-          onClick={() => setShowSelect(!showSelect)}
+          onClick={() => setShowSelect(false)}
           src={CloseSvg}
         />
       ) : (
         <img
           alt="tv"
           className="mode-modal-open-button"
-          onClick={() => setShowSelect(!showSelect)}
+          onClick={() => setShowSelect(true)}
           src={TvSvg}
         />
       )}
@@ -106,9 +106,10 @@ const Home = () => {
         />
       )}
       {mode === 'classic' && (
-        <div className="mode-background mode-background-image">
-          <img alt="Background Image" src={image} />
-        </div>
+        <div
+          className="mode-background mode-background-image"
+          style={{ backgroundImage: `url(${image})` }}
+        />
       )}
     </>
   );
