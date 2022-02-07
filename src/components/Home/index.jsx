@@ -18,6 +18,7 @@ const Home = () => {
   return (
     <>
       <img
+        alt="tv"
         className="mode-modal-button"
         onClick={() => setShowSelect(!showSelect)}
         src={TvSvg}
@@ -39,6 +40,7 @@ const Home = () => {
                 Gif by{" "}
                 <a
                   href="https://giphy.com/gifs/trippy-psychedelic-universe-OFmcFc8voTzpRkCKKF"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   @dualvoidanima
@@ -56,7 +58,11 @@ const Home = () => {
               />
               <div className="mode-selector-mode-name">
                 Barry Martin's Hopalong Orbits by{" "}
-                <a href="https://github.com/dghost" target="_blank">
+                <a
+                  href="https://github.com/dghost"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   @dghost
                 </a>
               </div>
@@ -72,7 +78,11 @@ const Home = () => {
               />
               <div className="mode-selector-mode-name">
                 WormHole by{" "}
-                <a href="https://github.com/devildrey33" target="_blank">
+                <a
+                  href="https://github.com/devildrey33"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   @devildrey33
                 </a>
               </div>
@@ -82,15 +92,17 @@ const Home = () => {
       )}
       {mode === "orbits" && (
         <iframe
+          title="Hopalong VR"
           className="mode-selector-iframe"
-          src="https://tigransimonyan.github.io/hopalong-vr/"
-        ></iframe>
+          src="https://tigransimonyan.github.io/hopalong-vr?r=3"
+        />
       )}
       {mode === "wormhole" && (
         <iframe
+          title="WormHole"
           className="mode-selector-iframe"
-          src="https://tigransimonyan.github.io/wormhole?r=2"
-        ></iframe>
+          src="https://tigransimonyan.github.io/wormhole?r=3"
+        />
       )}
       {mode === "classic" && (
         <div
