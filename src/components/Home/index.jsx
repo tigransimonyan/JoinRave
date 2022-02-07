@@ -105,12 +105,9 @@ const Home = () => {
         />
       )}
       {mode === "classic" && (
-        <div
-          className="mode-selector-bg-image"
-          style={{
-            backgroundImage: `url(${GiphyGif})`,
-          }}
-        />
+        <div className="mode-selector-background">
+          <img alt="Background Image" src={GiphyGif} />
+        </div>
       )}
     </>
   );
