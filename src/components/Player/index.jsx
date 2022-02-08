@@ -37,6 +37,7 @@ function Player() {
   }, [playing, loading]);
 
   const pause = useCallback(() => {
+    setError(false);
     if (playing) {
       setPlaying(false);
       audio.pause();
@@ -66,16 +67,32 @@ function Player() {
     pause();
   }, [pause]);
 
+  const recheck = useCallback(() => {
+    setTimeout(() => {
+      fetch(process.env.REACT_APP_API).then((response) => {
+        if (response.ok) {
+          setError(false);
+          audio.src = process.env.REACT_APP_API;
+          audio.load();
+          audio.play();
+        } else {
+          recheck();
+        }
+      });
+    }, 10000);
+  }, []);
+
   const onError = useCallback(() => {
     if (!error) {
       setError(true);
-      audio.src = 'http://81.88.36.42:8010/stream/1/';
-      audio.pause();
+      audio.src = 'https://cast.magicstreams.gr:9111/stream/1/';
+      audio.load();
+      recheck();
     } else {
       pause();
       setLoading(false);
     }
-  }, [pause, error]);
+  }, [pause, error, recheck]);
 
   useEffect(() => {
     audio.addEventListener('play', onPlay);
