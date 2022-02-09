@@ -1,13 +1,13 @@
-import LogoImg from './assets/logo-white.png';
 import Player from './components/Player';
 import Home from './components/Home';
+import Logo from './components/Logo';
 
 function App() {
   return (
     <main className="main">
+      <Logo />
       <Player />
       <Home />
-      <img className="logo" alt="Joinrave.com" width="120" src={LogoImg} />
     </main>
   );
 }
