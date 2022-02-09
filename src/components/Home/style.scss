@@ -93,22 +93,16 @@
   }
 }
 
-.mode-modal-close-button,
 .mode-modal-open-button {
   width: 30px;
   position: absolute;
   right: 24px;
   top: 24px;
-  z-index: 25;
+  z-index: 10;
   cursor: pointer;
   transition: transform 0.3s;
   transform: scale(1);
   &:hover {
     transform: scale(1.1);
   }
-}
-
-.mode-modal-close-button {
-  width: 20px;
-  right: 30px;
 }

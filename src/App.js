@@ -1,6 +1,7 @@
 import Player from './components/Player';
 import Home from './components/Home';
 import Logo from './components/Logo';
+import Chat from './components/Chat';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Logo />
       <Player />
       <Home />
+      <Chat />
     </main>
   );
 }
