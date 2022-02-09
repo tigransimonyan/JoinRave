@@ -1,11 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.db243f31.chunk.css",
-    "main.js": "/static/js/main.68fe7baa.chunk.js",
+    "main.css": "/static/css/main.3f278f18.chunk.css",
+    "main.js": "/static/js/main.ad1d73b3.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.8f1fc9e9.js",
     "static/js/2.2cb3f567.chunk.js": "/static/js/2.2cb3f567.chunk.js",
     "index.html": "/index.html",
     "static/js/2.2cb3f567.chunk.js.LICENSE.txt": "/static/js/2.2cb3f567.chunk.js.LICENSE.txt",
+    "static/media/chat.0a14ab07.svg": "/static/media/chat.0a14ab07.svg",
     "static/media/close.2af6250f.svg": "/static/media/close.2af6250f.svg",
     "static/media/fractal.ef91197d.png": "/static/media/fractal.ef91197d.png",
     "static/media/play.a3b6cb10.svg": "/static/media/play.a3b6cb10.svg",
@@ -16,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.8f1fc9e9.js",
     "static/js/2.2cb3f567.chunk.js",
-    "static/css/main.db243f31.chunk.css",
-    "static/js/main.68fe7baa.chunk.js"
+    "static/css/main.3f278f18.chunk.css",
+    "static/js/main.ad1d73b3.chunk.js"
   ]
 }
