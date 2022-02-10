@@ -10,6 +10,7 @@ const Modal = (props) => {
         onClick={() => props.onClose(false)}
         src={CloseSvg}
       />
+      {props.title && <h4 className="modal-title">{props.title}</h4>}
       {props.children}
     </div>
   );

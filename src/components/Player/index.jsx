@@ -1,7 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
-import PlayIcon from "../../assets/play.svg";
-import StopIcon from "../../assets/stop.svg";
-import "./style.scss";
+import { useEffect, useState, useCallback } from 'react';
+import PlayIcon from '../../assets/play.svg';
+import StopIcon from '../../assets/stop.svg';
+import './style.scss';
 
 const audio = new Audio();
 // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -18,8 +18,8 @@ function Player() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [info, setInfo] = useState({
-    title: "",
-    message: "...",
+    title: '',
+    message: '...',
   });
 
   useEffect(() => {
@@ -67,47 +67,47 @@ function Player() {
     pause();
   }, [pause]);
 
-  const recheck = useCallback(() => {
-    setTimeout(() => {
-      fetch(process.env.REACT_APP_API).then((response) => {
-        if (response.ok) {
-          setError(false);
-          audio.src = process.env.REACT_APP_API;
-          audio.load();
-          audio.play();
-        } else {
-          recheck();
-        }
-      });
-    }, 300000);
-  }, []);
+  // const recheck = useCallback(() => {
+  //   setTimeout(() => {
+  //     fetch(process.env.REACT_APP_API).then((response) => {
+  //       if (response.ok) {
+  //         setError(false);
+  //         audio.src = process.env.REACT_APP_API;
+  //         audio.load();
+  //         audio.play();
+  //       } else {
+  //         recheck();
+  //       }
+  //     });
+  //   }, 300000);
+  // }, []);
 
   const onError = useCallback(() => {
-    if (!error) {
-      setError(true);
-      audio.src = "https://cast.magicstreams.gr:9111/stream/1/";
-      audio.load();
-      recheck();
-    } else {
-      pause();
-      setLoading(false);
-    }
-  }, [pause, error, recheck]);
+    // if (!error) {
+    setError(true);
+    // audio.src = "https://cast.magicstreams.gr:9111/stream/1/";
+    // audio.load();
+    // recheck();
+    // } else {
+    pause();
+    setLoading(false);
+    // }
+  }, [pause]);
 
   useEffect(() => {
-    audio.addEventListener("play", onPlay);
-    audio.addEventListener("ended", onEnded);
-    audio.addEventListener("pause", onPause);
-    audio.addEventListener("stalled", onPause);
-    audio.addEventListener("canplay", onCanplay);
-    audio.addEventListener("error", onError);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('stalled', onPause);
+    audio.addEventListener('canplay', onCanplay);
+    audio.addEventListener('error', onError);
     return () => {
-      audio.removeEventListener("play", onPlay);
-      audio.removeEventListener("ended", onEnded);
-      audio.removeEventListener("pause", onPause);
-      audio.removeEventListener("stalled", onPause);
-      audio.removeEventListener("canplay", onCanplay);
-      audio.removeEventListener("error", onError);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('ended', onEnded);
+      audio.removeEventListener('pause', onPause);
+      audio.removeEventListener('stalled', onPause);
+      audio.removeEventListener('canplay', onCanplay);
+      audio.removeEventListener('error', onError);
     };
   }, [onPlay, onCanplay, onError, onPause, onEnded]);
 
@@ -117,25 +117,12 @@ function Player() {
         {loading ? (
           <div className="player-loading" />
         ) : playing ? (
-          <img
-            className="player-pause-button"
-            alt="Pause"
-            src={StopIcon}
-            onClick={pause}
-          />
+          <img className="player-pause-button" alt="Pause" src={StopIcon} onClick={pause} />
         ) : (
-          <img
-            className="player-play-button"
-            alt="Play"
-            src={PlayIcon}
-            onClick={play}
-          />
+          <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
         )}
       </div>
-      <div
-        className="player-info"
-        dangerouslySetInnerHTML={{ __html: info.message }}
-      />
+      <div className="player-info" dangerouslySetInnerHTML={{ __html: info.message }} />
     </div>
   );
 }

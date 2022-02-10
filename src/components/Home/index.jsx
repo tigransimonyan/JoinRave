@@ -4,6 +4,7 @@ import FractalImg from '../../assets/modes/fractal.png';
 import WormHoleImg from '../../assets/modes/worm-hole.png';
 import TvSvg from '../../assets/tv.svg';
 import Modal from '../Modal';
+import IconText from '../IconText';
 
 const Home = () => {
   const [mode, setMode] = useState('classic');
@@ -18,14 +19,8 @@ const Home = () => {
 
   return (
     <>
-      <img
-        alt="tv"
-        className="mode-modal-open-button"
-        onClick={() => setShowModal(true)}
-        src={TvSvg}
-      />
-      <Modal visible={showModal} onClose={setShowModal}>
-        <h4 className="mode-selector-title">Select Rave Mode</h4>
+      <IconText icon={TvSvg} onClick={() => setShowModal(true)} name="Mode" top={24} />
+      <Modal title="Select Rave Mode" visible={showModal} onClose={setShowModal}>
         <div className="mode-selector-modes">
           <div className="mode-selector-mode" onClick={() => changeMode('classic')}>
             <img className="mode-selector-mode-image" alt="Classic Mode" src={image} />

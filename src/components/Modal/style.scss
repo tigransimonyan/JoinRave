@@ -19,6 +19,13 @@
     opacity: 1;
     pointer-events: auto;
   }
+  &-title {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 35px;
+    margin-top: 0;
+  }
 }
 
 .modal-close-button {

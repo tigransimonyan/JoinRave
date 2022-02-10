@@ -1,0 +1,14 @@
+.events {
+  &-empty {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    p,
+    a {
+      text-align: center;
+      line-height: 20px;
+      color: #fff;
+      font-size: 14px;
+    }
+  }
+}

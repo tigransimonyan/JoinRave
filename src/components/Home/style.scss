@@ -12,13 +12,6 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.8);
-  &-title {
-    font-size: 20px;
-    color: #fff;
-    font-weight: 800;
-    margin-bottom: 35px;
-    margin-top: 0;
-  }
   &-modes {
     display: flex;
     flex-wrap: wrap;
@@ -90,19 +83,5 @@
         linear-gradient(to right, rgb(20, 20, 20) 0.4px, #000000 0.4px);
       background-size: 4px 4px;
     }
-  }
-}
-
-.mode-modal-open-button {
-  width: 30px;
-  position: absolute;
-  right: 24px;
-  top: 24px;
-  z-index: 10;
-  cursor: pointer;
-  transition: transform 0.3s;
-  transform: scale(1);
-  &:hover {
-    transform: scale(1.1);
   }
 }
