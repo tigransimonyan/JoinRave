@@ -14,7 +14,7 @@ const Events = () => {
           <p>
             Join our official Telegram channel to get <br />
             notified about live streams:{' '}
-            <a href="https://t.me/joinrave" target="_blank">
+            <a href="https://t.me/joinrave" target="_blank" rel="noreferrer">
               @joinrave
             </a>
           </p>
