@@ -17,16 +17,16 @@ function Player() {
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [info, setInfo] = useState({
-    title: '',
-    message: '...',
-  });
+  // const [info, setInfo] = useState({
+  //   title: '',
+  //   message: '...',
+  // });
 
-  useEffect(() => {
-    fetch(`/info.json?r=${Math.random()}`)
-      .then((response) => response.json())
-      .then((response) => setInfo(response));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`/info.json?r=${Math.random()}`)
+  //     .then((response) => response.json())
+  //     .then((response) => setInfo(response));
+  // }, []);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
@@ -122,7 +122,19 @@ function Player() {
           <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
         )}
       </div>
-      <div className="player-info" dangerouslySetInnerHTML={{ __html: info.message }} />
+      <div className="player-info">
+        {'Join our '}
+        <a href="https://t.me/joinrave" target="_blank">
+          Telegram
+        </a>
+        {' and '}
+        <a href="https://soundcloud.com/joinrave" target="_blank">
+          SoundCloud
+        </a>
+        {' channels '}
+        <br />
+        to get notified about live streams.
+      </div>
     </div>
   );
 }
