@@ -18,10 +18,11 @@
 }
 
 .player-info {
-  font-size: 13px;
   color: #fff;
+  font-size: 13px;
+  max-width: 310px;
   line-height: 20px;
-  padding: 0 12px;
+  padding-left: 12px;
   border-radius: 4px;
   & > * {
     font-size: 13px;

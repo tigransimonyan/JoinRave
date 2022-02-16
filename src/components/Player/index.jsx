@@ -130,10 +130,8 @@ function Player() {
         {' and '}
         <a href="https://soundcloud.com/joinrave" rel="noreferrer" target="_blank">
           SoundCloud
-        </a>
-        {' channels '}
-        <br />
-        to get notified about live streams.
+        </a>{' '}
+        channels to get notified about live streams.
       </div>
     </div>
   );
