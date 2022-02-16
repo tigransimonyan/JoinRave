@@ -124,11 +124,11 @@ function Player() {
       </div>
       <div className="player-info">
         {'Join our '}
-        <a href="https://t.me/joinrave" target="_blank">
+        <a href="https://t.me/joinrave" rel="noreferrer" target="_blank">
           Telegram
         </a>
         {' and '}
-        <a href="https://soundcloud.com/joinrave" target="_blank">
+        <a href="https://soundcloud.com/joinrave" rel="noreferrer" target="_blank">
           SoundCloud
         </a>
         {' channels '}
