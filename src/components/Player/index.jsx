@@ -2,31 +2,16 @@ import { useEffect, useState, useCallback } from 'react';
 import PlayIcon from '../../assets/play.svg';
 import StopIcon from '../../assets/stop.svg';
 import './style.scss';
+import { useLocation } from 'react-router-dom';
+import classnames from 'classnames';
 
 const audio = new Audio();
-// const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-// const analyser = audioContext.createAnalyser();
-// audio.crossOrigin = 'anonymous';
-// audio.autoplay = false;
-// audio.volume = 1;
-// const src = audioContext.createMediaElementSource(audio);
-// src.connect(analyser);
-// analyser.connect(audioContext.destination);
 
 function Player() {
+  const location = useLocation();
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  // const [info, setInfo] = useState({
-  //   title: '',
-  //   message: '...',
-  // });
-
-  // useEffect(() => {
-  //   fetch(`/info.json?r=${Math.random()}`)
-  //     .then((response) => response.json())
-  //     .then((response) => setInfo(response));
-  // }, []);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
@@ -112,7 +97,7 @@ function Player() {
   }, [onPlay, onCanplay, onError, onPause, onEnded]);
 
   return (
-    <div className="player">
+    <div className={classnames(['player', { 'player-small': location.pathname !== '/' }])}>
       <div className="player-wrapper">
         {loading ? (
           <div className="player-loading" />
@@ -122,17 +107,7 @@ function Player() {
           <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
         )}
       </div>
-      <div className="player-info">
-        {'Join our '}
-        <a href="https://t.me/joinrave" rel="noreferrer" target="_blank">
-          Telegram
-        </a>
-        {' and '}
-        <a href="https://soundcloud.com/joinrave" rel="noreferrer" target="_blank">
-          SoundCloud
-        </a>{' '}
-        channels to get notified about live streams.
-      </div>
+      <div className="player-info"></div>
     </div>
   );
 }

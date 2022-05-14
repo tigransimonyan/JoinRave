@@ -76,10 +76,10 @@
       bottom: 0;
       position: absolute;
       z-index: 1;
-
+      pointer-events: none;
       background-color: #000000;
       opacity: 0.2;
-      background-image: linear-gradient(rgb(20, 20, 20) 0.4px, transparent 0.4px),
+      background-image: linear-gradient(rgb(20, 20, 20) 0.4px, transparent 0.9px),
         linear-gradient(to right, rgb(20, 20, 20) 0.4px, #000000 0.4px);
       background-size: 4px 4px;
     }

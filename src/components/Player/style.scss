@@ -9,6 +9,21 @@
   flex-direction: row;
   align-items: center;
   padding: 0 24px;
+  &-small {
+    // display: none;
+    height: 46px;
+    background-color: #000;
+    .player-pause-button,
+    .player-play-button,
+    .player-loading {
+      width: 20px;
+      height: 20px;
+    }
+    .player-info {
+      padding-bottom: 2px;
+    }
+    // border-top: 1px solid #cecece;
+  }
 }
 
 .player-wrapper {
@@ -20,13 +35,10 @@
 .player-info {
   color: #fff;
   font-size: 13px;
-  max-width: 310px;
-  line-height: 20px;
-  padding-left: 12px;
+  // max-width: 310px;
+  padding-bottom: 5px;
+  padding-left: 16px;
   border-radius: 4px;
-  & > * {
-    font-size: 13px;
-  }
 }
 
 .player-loading {

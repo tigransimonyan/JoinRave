@@ -3,8 +3,7 @@ import './style.scss';
 import FractalImg from '../../assets/modes/fractal.png';
 import WormHoleImg from '../../assets/modes/worm-hole.png';
 import TvSvg from '../../assets/tv.svg';
-import Modal from '../Modal';
-import IconText from '../IconText';
+import Modal from '../../components/Modal';
 
 const Home = () => {
   const [mode, setMode] = useState('classic');
@@ -19,7 +18,7 @@ const Home = () => {
 
   return (
     <>
-      <IconText icon={TvSvg} onClick={() => setShowModal(true)} name="Mode" top={24} />
+      {/* <IconText icon={TvSvg} onClick={() => setShowModal(true)} name="Mode" top={24} /> */}
       <Modal title="Select Rave Mode" visible={showModal} onClose={setShowModal}>
         <div className="mode-selector-modes">
           <div className="mode-selector-mode" onClick={() => changeMode('classic')}>
