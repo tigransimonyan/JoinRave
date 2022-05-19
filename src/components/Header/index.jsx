@@ -1,7 +1,7 @@
-import Logo from "../Logo";
-import DesktopMenu from "../Menu";
-import { useLocation } from "react-router-dom";
-import { useRef } from "react";
+import Logo from '../Logo';
+import DesktopMenu from '../Menu';
+import { useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 import {
   Drawer,
   DrawerOverlay,
@@ -11,8 +11,8 @@ import {
   DrawerBody,
   useDisclosure,
   Box,
-} from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+} from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Header = () => {
   const btnRef = useRef();
@@ -33,27 +33,22 @@ const Header = () => {
       zIndex="10"
       padding="0 20px"
       height="55px"
-      backgroundColor={location.pathname === "/" ? "transparent" : "#333333"}
+      backgroundColor={location.pathname === '/' ? 'transparent' : '#333333'}
     >
       <Logo />
-      <Box display={{ base: "none", md: "flex" }}>
+      <Box display={{ base: 'none', md: 'flex' }}>
         <DesktopMenu flexDir="row" />
       </Box>
-      <Box display={{ base: "flex", md: "none" }}>
+      <Box display={{ base: 'flex', md: 'none' }}>
         <HamburgerIcon
           cursor="pointer"
           onClick={onOpen}
           color="#ffffff"
-          fontSize="24px"
+          fontSize="28px"
           aria-label="Menu"
         />
       </Box>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
         <DrawerOverlay />
         <DrawerContent backgroundColor="#000000">
           <DrawerCloseButton color="#ffffff" />

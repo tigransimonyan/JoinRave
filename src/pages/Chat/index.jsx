@@ -1,14 +1,9 @@
-import { useState } from 'react';
 import './style.scss';
-import ChatSvg from '../../assets/chat.svg';
-import Modal from '../../components/Modal';
-import IconText from '../../components/IconText';
+import Page from '../../components/Page';
 
 function Chat() {
-  const [showModal, setShowModal] = useState(false);
   return (
-    <>
-      {/* <IconText icon={ChatSvg} onClick={() => setShowModal(true)} name="Chat" top={96} /> */}
+    <Page>
       <div className="chat">
         <iframe
           title="IRC Chat"
@@ -17,7 +12,7 @@ function Chat() {
           frameborder="0"
         ></iframe>
       </div>
-    </>
+    </Page>
   );
 }
 

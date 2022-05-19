@@ -4,6 +4,7 @@ import StopIcon from '../../assets/stop.svg';
 import './style.scss';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
+import { Text, Link } from '@chakra-ui/react';
 
 const audio = new Audio();
 
@@ -11,7 +12,7 @@ function Player() {
   const location = useLocation();
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [, setError] = useState(false);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
@@ -107,7 +108,29 @@ function Player() {
           <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
         )}
       </div>
-      <div className="player-info"></div>
+      <Text color="#fff" fontSize="13px" maxW="310px" pl="12px">
+        {'Join our '}
+        <Link
+          href="https://t.me/joinrave"
+          textDecoration="underline"
+          color="#ede716"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Telegram
+        </Link>
+        {' and '}
+        <Link
+          href="https://soundcloud.com/joinrave"
+          textDecoration="underline"
+          color="#ede716"
+          rel="noreferrer"
+          target="_blank"
+        >
+          SoundCloud
+        </Link>
+        {' channels to get notified about live streams.'}
+      </Text>
     </div>
   );
 }

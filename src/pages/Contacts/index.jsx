@@ -12,12 +12,12 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-} from "@chakra-ui/react";
-import { useFormik } from "formik";
-import { useState } from "react";
-import axios from "axios";
+} from '@chakra-ui/react';
+import { useFormik } from 'formik';
+import { useState } from 'react';
+import axios from 'axios';
 
-import Page from "../../components/Page";
+import Page from '../../components/Page';
 
 function ContactUs() {
   const toast = useToast();
@@ -26,14 +26,14 @@ function ContactUs() {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      message: "",
-      email: "",
+      name: '',
+      message: '',
+      email: '',
     },
     onSubmit: (values) => {
       setLoading(true);
       axios
-        .post("https://mailer.def.am", values)
+        .post('https://mailer.def.am', values)
         .then(() => {
           formik.resetForm();
           setSubmited(true);
@@ -42,8 +42,8 @@ function ContactUs() {
         .catch(() => {
           setLoading(false);
           toast({
-            title: "Something went wrong!",
-            status: "error",
+            title: 'Something went wrong!',
+            status: 'error',
             duration: 9000,
             isClosable: true,
           });
@@ -58,7 +58,7 @@ function ContactUs() {
           Contact Us
         </Heading>
         <Text as="p" mt="4px" color="#999999" fontSize="16px">
-          Feel free to contact us
+          We love questions and feedback.
         </Text>
         {submited ? (
           <Alert
@@ -76,8 +76,7 @@ function ContactUs() {
               Application submitted!
             </AlertTitle>
             <AlertDescription maxWidth="sm">
-              Thanks for submitting your application. Our team will get back to
-              you soon.
+              Thanks for submitting your application. Our team will get back to you soon.
             </AlertDescription>
           </Alert>
         ) : (
@@ -113,12 +112,7 @@ function ContactUs() {
                   value={formik.values.message}
                 />
               </FormControl>
-              <Button
-                loading={loading}
-                type="submit"
-                variant="solid"
-                colorScheme="yellow"
-              >
+              <Button loading={loading} type="submit" variant="solid" colorScheme="yellow">
                 Submit
               </Button>
             </VStack>

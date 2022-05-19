@@ -1,6 +1,6 @@
-import "./style.scss";
-import { NavLink } from "react-router-dom";
-import { Box } from "@chakra-ui/react";
+import './style.scss';
+import { NavLink } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
 
 export const Menu = ({ flexDir }) => {
   return (
@@ -8,9 +8,9 @@ export const Menu = ({ flexDir }) => {
       <NavLink className="main-menu-item" to="/">
         Radio
       </NavLink>
-      {/* <NavLink className="main-menu-item" to="/events">
+      <NavLink className="main-menu-item" to="/events">
         Events
-      </NavLink> */}
+      </NavLink>
       {/* <a className="main-menu-item" target="_blank" href="https://irc.def.am/?channel=#joinrave">
         IRC Chat
       </a> */}
