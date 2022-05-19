@@ -44,7 +44,7 @@ const Header = () => {
           cursor="pointer"
           onClick={onOpen}
           color="#ffffff"
-          fontSize="28px"
+          fontSize="26px"
           aria-label="Menu"
         />
       </Box>
