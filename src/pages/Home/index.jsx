@@ -3,6 +3,7 @@ import './style.scss';
 import FractalImg from '../../assets/modes/fractal.png';
 import WormHoleImg from '../../assets/modes/worm-hole.png';
 import Modal from '../../components/Modal';
+import Footer from '../../components/Footer';
 
 const Home = () => {
   const [mode, setMode] = useState('classic');
@@ -13,14 +14,25 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const image = `/gifs/dualvoidanima-7.gif`;
+  const image = `/gifs/dualvoidanima-3.gif`;
 
   return (
     <>
-      <Modal title="Select Rave Mode" visible={showModal} onClose={setShowModal}>
+      <Modal
+        title="Select Rave Mode"
+        visible={showModal}
+        onClose={setShowModal}
+      >
         <div className="mode-selector-modes">
-          <div className="mode-selector-mode" onClick={() => changeMode('classic')}>
-            <img className="mode-selector-mode-image" alt="Classic Mode" src={image} />
+          <div
+            className="mode-selector-mode"
+            onClick={() => changeMode('classic')}
+          >
+            <img
+              className="mode-selector-mode-image"
+              alt="Classic Mode"
+              src={image}
+            />
             <div className="mode-selector-mode-name">
               Gif by{' '}
               <a
@@ -33,7 +45,10 @@ const Home = () => {
               </a>
             </div>
           </div>
-          <div className="mode-selector-mode" onClick={() => changeMode('orbits')}>
+          <div
+            className="mode-selector-mode"
+            onClick={() => changeMode('orbits')}
+          >
             <img
               className="mode-selector-mode-image"
               alt="Barry Martin's Hopalong Orbits"
@@ -51,7 +66,10 @@ const Home = () => {
               </a>
             </div>
           </div>
-          <div className="mode-selector-mode" onClick={() => changeMode('wormhole')}>
+          <div
+            className="mode-selector-mode"
+            onClick={() => changeMode('wormhole')}
+          >
             <img
               className="mode-selector-mode-image"
               alt="devildrey33's WormHole"
@@ -91,6 +109,7 @@ const Home = () => {
           style={{ backgroundImage: `url(${image})` }}
         />
       )}
+      <Footer />
     </>
   );
 };

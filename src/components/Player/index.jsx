@@ -1,10 +1,9 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import PlayIcon from '../../assets/play.svg';
 import StopIcon from '../../assets/stop.svg';
 import './style.scss';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
-import { Text, Link } from '@chakra-ui/react';
 
 const audio = new Audio();
 
@@ -12,7 +11,21 @@ function Player() {
   const location = useLocation();
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [info, setInfo] = useState(null);
   const [, setError] = useState(false);
+
+  useEffect(() => {
+    fetch('https://radio.joinrave.com/status-json.xsl')
+      .then((res) => res.json())
+      .then((json) => setInfo(json))
+      .catch(() => setInfo(null));
+  }, []);
+
+  const title = useMemo(() => {
+    const _title = String(info?.icestats?.source?.title);
+
+    return _title.replace(/_/g, ' ');
+  }, [info?.icestats?.source?.title]);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
@@ -98,39 +111,34 @@ function Player() {
   }, [onPlay, onCanplay, onError, onPause, onEnded]);
 
   return (
-    <div className={classnames(['player', { 'player-small': location.pathname !== '/' }])}>
+    <div
+      className={classnames([
+        'player',
+        { 'player-small': location.pathname !== '/' },
+      ])}
+    >
       <div className="player-wrapper">
         {loading ? (
           <div className="player-loading" />
         ) : playing ? (
-          <img className="player-pause-button" alt="Pause" src={StopIcon} onClick={pause} />
+          <img
+            className="player-pause-button"
+            alt="Pause"
+            src={StopIcon}
+            onClick={pause}
+          />
         ) : (
-          <img className="player-play-button" alt="Play" src={PlayIcon} onClick={play} />
+          <img
+            className="player-play-button"
+            alt="Play"
+            src={PlayIcon}
+            onClick={play}
+          />
         )}
       </div>
-      <Text color="#fff" fontSize="13px" maxW="310px" pl="12px">
-        {'Join our '}
-        <Link
-          href="https://t.me/joinrave"
-          textDecoration="underline"
-          color="#ede716"
-          rel="noreferrer"
-          target="_blank"
-        >
-          Telegram
-        </Link>
-        {' and '}
-        <Link
-          href="https://soundcloud.com/joinrave"
-          textDecoration="underline"
-          color="#ede716"
-          rel="noreferrer"
-          target="_blank"
-        >
-          SoundCloud
-        </Link>
-        {' channels to get notified about live streams.'}
-      </Text>
+      <div className="track-info">
+        {title ? `Playing: ${title}` : 'Offline :('}
+      </div>
     </div>
   );
 }
