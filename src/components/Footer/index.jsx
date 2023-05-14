@@ -41,13 +41,13 @@ function Footer() {
         >
           Artwork by{' '}
           <Link
-            href="https://giphy.com/baramatiscreative"
+            href="https://giphy.com/dualvoidanima"
             textDecoration="underline"
             color="#ede716"
             rel="noreferrer"
             target="_blank"
           >
-            @baramatiscreative
+            @dualvoidanima
           </Link>
         </Text>
       </SimpleGrid>
