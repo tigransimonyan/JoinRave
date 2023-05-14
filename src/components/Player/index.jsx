@@ -22,9 +22,13 @@ function Player() {
   }, []);
 
   const title = useMemo(() => {
-    const _title = String(info?.icestats?.source?.title);
+    const _title = info?.icestats?.source?.title;
 
-    return _title.replace(/_/g, ' ');
+    if (_title) {
+      return _title.replace(/_/g, ' ');
+    }
+
+    return null;
   }, [info?.icestats?.source?.title]);
 
   const play = useCallback(() => {
