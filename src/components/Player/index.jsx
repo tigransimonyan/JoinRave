@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
-import PlayIcon from '../../assets/play.svg';
-import StopIcon from '../../assets/stop.svg';
+import PlayIcon from '../../icons/Play';
+import StopIcon from '../../icons/Stop';
 import './style.scss';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
@@ -15,7 +15,7 @@ function Player() {
   const [, setError] = useState(false);
 
   useEffect(() => {
-    fetch('https://radio.joinrave.com/status-json.xsl')
+    fetch(process.env.REACT_APP_STATUS_API)
       .then((res) => res.json())
       .then((json) => setInfo(json))
       .catch(() => setInfo(null));
@@ -34,7 +34,7 @@ function Player() {
   const play = useCallback(() => {
     if (!playing && !loading) {
       setLoading(true);
-      audio.src = process.env.REACT_APP_API;
+      audio.src = process.env.REACT_APP_STREAM + '?rnd=' + Math.random();
       audio.load();
     }
   }, [playing, loading]);
@@ -125,24 +125,16 @@ function Player() {
         {loading ? (
           <div className="player-loading" />
         ) : playing ? (
-          <img
-            className="player-pause-button"
-            alt="Pause"
-            src={StopIcon}
-            onClick={pause}
-          />
+          <div className="player-pause-button" alt="Pause" onClick={pause}>
+            <StopIcon />
+          </div>
         ) : (
-          <img
-            className="player-play-button"
-            alt="Play"
-            src={PlayIcon}
-            onClick={play}
-          />
+          <div className="player-pause-button" alt="Play" onClick={play}>
+            <PlayIcon />
+          </div>
         )}
       </div>
-      <div className="track-info">
-        {title ? `Playing: ${title}` : 'Offline :('}
-      </div>
+      <div className="track-info">{title ? `Playing: ${title}` : '---'}</div>
     </div>
   );
 }
