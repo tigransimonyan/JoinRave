@@ -5,6 +5,7 @@ function Footer() {
   return (
     <div className="footer">
       <SimpleGrid
+        opacity={0.6}
         columns={[1, 1, 2]}
         justifyContent="space-between"
         alignItems="flex-end"
@@ -14,7 +15,8 @@ function Footer() {
           <Link
             href="https://t.me/joinrave"
             textDecoration="underline"
-            color="#ede716"
+            color="#ffffff"
+            fontWeight={600}
             rel="noreferrer"
             target="_blank"
           >
@@ -24,7 +26,8 @@ function Footer() {
           <Link
             href="https://soundcloud.com/joinrave"
             textDecoration="underline"
-            color="#ede716"
+            color="#ffffff"
+            fontWeight={600}
             rel="noreferrer"
             target="_blank"
           >
@@ -43,9 +46,10 @@ function Footer() {
           <Link
             href="https://giphy.com/dualvoidanima"
             textDecoration="underline"
-            color="#ede716"
+            color="#ffffff"
             rel="noreferrer"
             target="_blank"
+            fontWeight={600}
           >
             @dualvoidanima
           </Link>

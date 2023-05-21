@@ -48,7 +48,12 @@ const Header = () => {
           aria-label="Menu"
         />
       </Box>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
         <DrawerOverlay />
         <DrawerContent backgroundColor="#000000">
           <DrawerCloseButton color="#ffffff" />
