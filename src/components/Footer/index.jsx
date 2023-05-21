@@ -39,7 +39,7 @@ function Footer() {
           color="#fff"
           fontSize="13px"
           px="20px"
-          pt="10px"
+          pt="5px"
           textAlign={['left', 'left', 'right']}
         >
           Artwork by{' '}
