@@ -30,13 +30,6 @@ function About() {
           corporate influence.
           <br />
           <br />
-          Joinrave.com is committed to providing the ultimate listening
-          experience for our audience. Our station is available 24/7, so you can
-          tune in at any time and enjoy the best in electronic music. We also
-          have a user-friendly website that makes it easy to access our radio
-          station from anywhere in the world.
-          <br />
-          <br />
           So, whether you're a seasoned raver or a newcomer to the electronic
           music scene, Joinrave.com has something for you. Tune in and join the
           party today!
