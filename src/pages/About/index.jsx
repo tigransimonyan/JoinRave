@@ -6,10 +6,10 @@ function About() {
   return (
     <Page>
       <div className="about-us">
-        <Heading as="h1" fontSize="24px" mt="40px" mb="10" color="#333333">
+        <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
           About Us
         </Heading>
-        <Text>
+        <Text mt="20px">
           Welcome to Joinrave.com, your go-to destination for 24/7 electronic
           music! Our radio station is dedicated to providing the best in
           electronic music, featuring a mix of ambient tracks and live sets by

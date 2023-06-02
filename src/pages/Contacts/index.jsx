@@ -57,7 +57,7 @@ function ContactUs() {
         <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
           Contact Us
         </Heading>
-        <Text as="p" mt="4px" color="#999999" fontSize="16px">
+        <Text as="p" mt="10px" color="#999999" fontSize="16px">
           We love questions and feedback.
         </Text>
         {submited ? (
@@ -76,7 +76,8 @@ function ContactUs() {
               Application submitted!
             </AlertTitle>
             <AlertDescription maxWidth="sm">
-              Thanks for submitting your application. Our team will get back to you soon.
+              Thanks for submitting your application. Our team will get back to
+              you soon.
             </AlertDescription>
           </Alert>
         ) : (
@@ -112,7 +113,12 @@ function ContactUs() {
                   value={formik.values.message}
                 />
               </FormControl>
-              <Button loading={loading} type="submit" variant="solid" colorScheme="yellow">
+              <Button
+                loading={loading}
+                type="submit"
+                variant="solid"
+                colorScheme="yellow"
+              >
                 Submit
               </Button>
             </VStack>

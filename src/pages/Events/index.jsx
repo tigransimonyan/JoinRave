@@ -7,14 +7,14 @@ const Events = () => {
       <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
         Past Events
       </Heading>
-      <Text as="p" mt="4px" color="#999999" fontSize="16px">
-        {'Join our official '}
+      <Text as="p" mt="10px" color="#999999" fontSize="16px">
+        {'Join our '}
         <Link
           href="https://t.me/joinrave"
           textDecor="underline"
           target="_blank"
           rel="noreferrer"
-          color="#d2cd00"
+          fontWeight={500}
         >
           Telegram
         </Link>

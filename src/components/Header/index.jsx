@@ -56,7 +56,7 @@ const Header = () => {
       >
         <DrawerOverlay />
         <DrawerContent backgroundColor="#000000">
-          <DrawerCloseButton color="#ffffff" />
+          <DrawerCloseButton color="#ffffff" _focus={{ outline: 'none' }} />
           <DrawerHeader color="#ffffff">Menu</DrawerHeader>
           <DrawerBody onClick={onClose}>
             <DesktopMenu flexDir="column" />
