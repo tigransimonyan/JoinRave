@@ -17,11 +17,11 @@ export const Menu = ({ flexDir }) => {
       {/* <NavLink className="main-menu-item" to="/submit-music">
         Submit Music
       </NavLink> */}
+      <NavLink className="main-menu-item" to="/about-us">
+        About
+      </NavLink>
       <NavLink className="main-menu-item" to="/contact-us">
         Contact Us
-      </NavLink>
-      <NavLink className="main-menu-item" to="/about-us">
-        About Us
       </NavLink>
     </Box>
   );

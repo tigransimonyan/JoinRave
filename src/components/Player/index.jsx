@@ -4,7 +4,6 @@ import StopIcon from '../../icons/Stop';
 import './style.scss';
 import { useLocation } from 'react-router-dom';
 import classnames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const audio = new Audio();
 
