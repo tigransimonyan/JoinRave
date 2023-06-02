@@ -1,13 +1,15 @@
 import { SimpleGrid, Heading, Text, Link } from '@chakra-ui/react';
 import Page from '../../components/Page';
+import img4miak from '../../assets/4miak.jpg';
+import img4miak2 from '../../assets/4miak-2.jpg';
 
 const Events = () => {
   return (
     <Page>
       <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
-        Past Events
+        Upcoming Events
       </Heading>
-      <Text as="p" mt="10px" color="#999999" fontSize="16px">
+      <Text as="p" mt="4px" color="#999999" fontSize="16px">
         {'Join our '}
         <Link
           href="https://t.me/joinrave"
@@ -20,10 +22,13 @@ const Events = () => {
         </Link>
         {' channel to get notified about live streams.'}
       </Text>
-      {/* <SimpleGrid mt="24px" columns={[1, 2, 3, 4]} spacing={[3, 3, 5, 8]}></SimpleGrid>
-      <Text py="60px" textAlign="center">
+      <SimpleGrid mt="24px" columns={[1, 2, 2, 2]} spacing={[3, 3, 5, 8]}>
+        <img src={img4miak} />
+        <img src={img4miak2} />
+      </SimpleGrid>
+      {/* <Text py="60px" textAlign="center">
         Nothing yet.
-      </Text>
+      </Text> */}
       <Heading as="h2" fontSize="24px" mt="40px" color="#333333">
         Past Events
       </Heading>
@@ -31,13 +36,14 @@ const Events = () => {
         {'Follow us on '}
         <Link
           href="https://soundcloud.com/joinrave"
+          textDecor="underline"
           target="_blank"
           rel="noreferrer"
-          color="#b0aa00"
+          fontWeight={500}
         >
           SoundCloud
         </Link>
-      </Text> */}
+      </Text>
       <SimpleGrid mt="24px" columns={[1]} spacing={[3, 3, 5]}>
         <iframe
           title="Soundcloud"

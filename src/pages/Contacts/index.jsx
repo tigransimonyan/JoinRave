@@ -57,7 +57,7 @@ function ContactUs() {
         <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
           Contact Us
         </Heading>
-        <Text as="p" mt="10px" color="#999999" fontSize="16px">
+        <Text as="p" mt="4px" color="#999999" fontSize="16px">
           We love questions and feedback.
         </Text>
         {submited ? (
