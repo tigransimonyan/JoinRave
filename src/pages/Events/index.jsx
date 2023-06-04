@@ -22,7 +22,7 @@ const Events = () => {
         </Link>
         {' channel to get notified about live streams.'}
       </Text>
-      <SimpleGrid mt="24px" columns={[1, 2, 2, 2]} spacing={[3, 3, 5, 8]}>
+      <SimpleGrid mt="24px" columns={[1, 2, 2, 3]} spacing={[3, 3, 5, 8]}>
         <img src={img4miak} />
         <img src={img4miak2} />
       </SimpleGrid>
