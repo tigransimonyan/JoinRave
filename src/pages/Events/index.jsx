@@ -6,10 +6,10 @@ import img4miak2 from '../../assets/4miak-2.jpg';
 const Events = () => {
   return (
     <Page>
-      <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
+      {/* <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
         Upcoming Events
-      </Heading>
-      <Text as="p" mt="4px" color="#999999" fontSize="16px">
+      </Heading> */}
+      {/* <Text as="p" mt="4px" color="#999999" fontSize="16px">
         {'Join our '}
         <Link
           href="https://t.me/joinrave"
@@ -25,7 +25,7 @@ const Events = () => {
       <SimpleGrid mt="24px" columns={[1, 2, 2, 3]} spacing={[3, 3, 5, 8]}>
         <img src={img4miak} />
         <img src={img4miak2} />
-      </SimpleGrid>
+      </SimpleGrid> */}
       {/* <Text py="60px" textAlign="center">
         Nothing yet.
       </Text> */}

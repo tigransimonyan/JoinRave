@@ -7,7 +7,7 @@ function About() {
     <Page>
       <div className="about-us">
         <Heading as="h1" fontSize="24px" mt="40px" color="#333333">
-          About Us
+          About
         </Heading>
         <Text mt="20px">
           Welcome to Joinrave.com, your go-to destination for 24/7 electronic
