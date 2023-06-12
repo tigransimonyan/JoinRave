@@ -12,14 +12,23 @@ function Player() {
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState(null);
-  const [, setError] = useState(false);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
+  const getInfo = useCallback(() => {
     fetch(process.env.REACT_APP_STATUS_API)
       .then((res) => res.json())
-      .then((json) => setInfo(json))
-      .catch(() => setInfo(null));
+      .then((json) => {
+        setInfo(json);
+        setError(false);
+      })
+      .catch(() => setError(true));
   }, []);
+
+  useEffect(() => {
+    getInfo();
+    const interval = setInterval(() => getInfo(), 120000);
+    return () => clearInterval(interval);
+  }, [getInfo]);
 
   const title = useMemo(() => {
     const _title = info?.icestats?.source?.title;
@@ -28,11 +37,12 @@ function Player() {
       return _title.replace(/_/g, ' ');
     }
 
-    return null;
+    return '---';
   }, [info?.icestats?.source?.title]);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
+      setError(false);
       setLoading(true);
       audio.src = process.env.REACT_APP_STREAM + '?rnd=' + Math.random();
       audio.load();
@@ -40,7 +50,6 @@ function Player() {
   }, [playing, loading]);
 
   const pause = useCallback(() => {
-    setError(false);
     if (playing) {
       setPlaying(false);
       audio.pause();
@@ -70,45 +79,24 @@ function Player() {
     pause();
   }, [pause]);
 
-  // const recheck = useCallback(() => {
-  //   setTimeout(() => {
-  //     fetch(process.env.REACT_APP_API).then((response) => {
-  //       if (response.ok) {
-  //         setError(false);
-  //         audio.src = process.env.REACT_APP_API;
-  //         audio.load();
-  //         audio.play();
-  //       } else {
-  //         recheck();
-  //       }
-  //     });
-  //   }, 300000);
-  // }, []);
-
   const onError = useCallback(() => {
-    // if (!error) {
     setError(true);
-    // audio.src = "https://cast.magicstreams.gr:9111/stream/1/";
-    // audio.load();
-    // recheck();
-    // } else {
-    pause();
     setLoading(false);
-    // }
+    pause();
   }, [pause]);
 
   useEffect(() => {
     audio.addEventListener('play', onPlay);
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('pause', onPause);
-    audio.addEventListener('stalled', onPause);
+    // audio.addEventListener('stalled', onPause);
     audio.addEventListener('canplay', onCanplay);
     audio.addEventListener('error', onError);
     return () => {
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('pause', onPause);
-      audio.removeEventListener('stalled', onPause);
+      // audio.removeEventListener('stalled', onPause);
       audio.removeEventListener('canplay', onCanplay);
       audio.removeEventListener('error', onError);
     };
@@ -134,7 +122,9 @@ function Player() {
           </div>
         )}
       </div>
-      <div className="track-info">{title ? `Playing: ${title}` : '---'}</div>
+      <div className="track-info">
+        {!error ? `Playing: ${title}` : 'Offline'}
+      </div>
     </div>
   );
 }

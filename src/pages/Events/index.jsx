@@ -1,7 +1,5 @@
 import { SimpleGrid, Heading, Text, Link } from '@chakra-ui/react';
 import Page from '../../components/Page';
-import img4miak from '../../assets/4miak.jpg';
-import img4miak2 from '../../assets/4miak-2.jpg';
 
 const Events = () => {
   return (
