@@ -18,8 +18,13 @@ function Player() {
     fetch(process.env.REACT_APP_STATUS_API)
       .then((res) => res.json())
       .then((json) => {
-        setInfo(json);
-        setError(false);
+        const source = json?.icestats?.source;
+        if (source) {
+          setInfo(source);
+          setError(false);
+        } else {
+          setError(false);
+        }
       })
       .catch(() => setError(true));
   }, []);
@@ -31,14 +36,14 @@ function Player() {
   }, [getInfo]);
 
   const title = useMemo(() => {
-    const _title = info?.icestats?.source?.title;
+    let _title = info?.title || '';
 
     if (_title) {
-      return _title.replace(/_/g, ' ');
+      return _title.replace(/_/g, ' ').replace('Total', 'Tøtal');
     }
 
     return '---';
-  }, [info?.icestats?.source?.title]);
+  }, [info]);
 
   const play = useCallback(() => {
     if (!playing && !loading) {
