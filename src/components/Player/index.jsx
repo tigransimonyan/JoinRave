@@ -23,7 +23,7 @@ function Player() {
           setInfo(source);
           setError(false);
         } else {
-          setError(false);
+          setError(true);
         }
       })
       .catch(() => setError(true));
