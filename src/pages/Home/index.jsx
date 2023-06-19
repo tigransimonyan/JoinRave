@@ -14,11 +14,11 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const image = `/artworks/randomgevisual-1.jpg`;
+  const image = `/artworks/helveticablanc-1.png`;
 
   return (
     <>
-      <Modal
+      {/* <Modal
         title="Select Rave Mode"
         visible={showModal}
         onClose={setShowModal}
@@ -102,7 +102,7 @@ const Home = () => {
           className="mode-background mode-background-iframe"
           src="https://tigransimonyan.github.io/wormhole?r=3"
         />
-      )}
+      )} */}
       {mode === 'classic' && (
         <div
           className="mode-background mode-background-image"

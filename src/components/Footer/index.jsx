@@ -40,14 +40,14 @@ function Footer() {
         >
           Artwork by{' '}
           <Link
-            href="https://www.instagram.com/randomgevisual/"
+            href="https://helveticablanc.com/"
             textDecoration="underline"
             color="#ffffff"
             rel="noreferrer"
             target="_blank"
             fontWeight={600}
           >
-            @randomgevisual
+            @helveticablanc
           </Link>
         </Text>
       </SimpleGrid>
