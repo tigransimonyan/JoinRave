@@ -6,7 +6,11 @@ const Logo = () => {
 
   return (
     <Box w="112px" cursor="pointer" onClick={() => navigate('/')}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120.8 19.18">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 120.8 19.18"
+        style={{ overflow: 'visible' }}
+      >
         <path
           d="M2.61,18.2A6.38,6.38,0,0,1,0,16.27L2.73,13A4,4,0,0,0,5.8,14.87a2,2,0,0,0,1.65-.65A2.87,2.87,0,0,0,8,12.29V4.67H1.9V.8H13V12a7,7,0,0,1-1.74,5.16,6.92,6.92,0,0,1-5.1,1.72A9,9,0,0,1,2.61,18.2Z"
           fill="#ede715"
