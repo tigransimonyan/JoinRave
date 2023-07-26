@@ -58,7 +58,7 @@
   0% {
     transform: scale(1);
   }
-  100%{
+  100% {
     transform: scale(1.3);
   }
 }
@@ -78,13 +78,13 @@
     background-position: center;
     background-repeat: no-repeat;
     will-change: transform;
-    
-    animation-name: backgroundMove;
-    animation-duration: 35s;
-    animation-timing-function: linear;
-    animation-direction: alternate;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
+
+    // animation-name: backgroundMove;
+    // animation-duration: 35s;
+    // animation-timing-function: linear;
+    // animation-direction: alternate;
+    // animation-fill-mode: both;
+    // animation-iteration-count: infinite;
     &:after {
       content: ' ';
       left: 0;
@@ -96,7 +96,8 @@
       pointer-events: none;
       background-color: #000000;
       opacity: 0.6;
-      background-image: linear-gradient(#0b0b0b .4px,transparent .9px), linear-gradient(90deg,#0b0b0b .4px,#000 0);
+      background-image: linear-gradient(#0b0b0b 0.4px, transparent 0.9px),
+        linear-gradient(90deg, #0b0b0b 0.4px, #000 0);
       background-size: 4px 4px;
     }
   }

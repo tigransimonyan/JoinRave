@@ -14,7 +14,7 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const image = `/artworks/helveticablanc-1.png`;
+  const image = `/gifs/dualvoidanima-8.gif`;
 
   return (
     <>
