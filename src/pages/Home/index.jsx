@@ -14,7 +14,7 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const image = `/gifs/dualvoidanima-5.gif`;
+  const image = `/gifs/dualvoidanima-7.gif`;
 
   return (
     <>
