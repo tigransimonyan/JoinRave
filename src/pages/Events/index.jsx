@@ -28,7 +28,7 @@ const Events = () => {
         Nothing yet.
       </Text> */}
       <Heading as="h2" fontSize="24px" mt="40px" color="#333333">
-        Past Events
+        Podcasts
       </Heading>
       <Text as="p" mt="4px" color="#999999" fontSize="16px">
         {'Follow us on '}

@@ -8,8 +8,8 @@ export const Menu = ({ flexDir }) => {
       <NavLink className="main-menu-item" to="/">
         Radio
       </NavLink>
-      <NavLink className="main-menu-item" to="/events">
-        Events
+      <NavLink className="main-menu-item" to="/podcasts">
+        Podcasts
       </NavLink>
       {/* <a className="main-menu-item" target="_blank" href="https://irc.def.am/?channel=#joinrave">
         IRC Chat
